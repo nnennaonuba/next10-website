@@ -106,7 +106,7 @@
   .divider {
     border: none;
     border-top: 1px solid var(--hairline);
-    margin: clamp(44px, 6vh, 55px) 0;
+    margin: clamp(64px, 9vh, 96px) 0;
   }
 
   /* ---- opening section ---- */
@@ -149,14 +149,14 @@
 
   .service p {
     font-size: clamp(17px, 1.8vw, 19px);
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.55;
     color: var(--ink);
     margin: 0;
   }
 
-  .service p .supporting {
-    font-weight: 400;
+  .service p strong {
+    font-weight: 700;
   }
 
   .conclusion {
@@ -186,15 +186,31 @@
   }
 
   .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: clamp(32px, 4vw, 56px);
+    row-gap: 32px;
     margin: 0 0 clamp(44px, 6vh, 60px);
   }
 
   .pillars p {
-    margin: 0 0 16px;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
   }
 
-  .pillars p:last-child {
-    margin-bottom: 0;
+  .pillars .pillar-label {
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+
+  @media (max-width: 820px) {
+    .pillars {
+      grid-template-columns: 1fr;
+      row-gap: clamp(28px, 4vh, 36px);
+    }
   }
 
   .independence {
@@ -244,6 +260,18 @@
     font-weight: 700;
   }
 
+  .bio-link {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--yellow);
+    padding-bottom: 1px;
+  }
+
+  .bio-link:hover {
+    color: var(--yellow);
+  }
+
   @media (max-width: 560px) {
     .proposition,
     .conclusion,
@@ -253,7 +281,7 @@
     }
 
     .divider {
-      margin: 28px 0;
+      margin: 44px 0;
     }
   }
 </style>
@@ -272,15 +300,15 @@
     <div class="services">
       <div class="service">
         <span class="num">01</span>
-        <p>Understand your numbers and drive profitable growth on TikTok Shop, without simply buying scale</p>
+        <p><strong>Grow profitably.</strong> Understand your numbers and drive profitable growth on TikTok Shop, without simply buying scale.</p>
       </div>
       <div class="service">
         <span class="num">02</span>
-        <p>Give TikTok Shop a clear job, and work with your agency to design launches and campaigns that produce the evidence management needs</p>
+        <p><strong>Give it a clear job.</strong> Work with your agency to design launches and campaigns that produce the evidence management needs.</p>
       </div>
       <div class="service">
         <span class="num">03</span>
-        <p>Connect it back to the whole business, including Amazon, your own site and retail. <span class="supporting">Platforms, agencies and internal teams each optimise to their own numbers and targets. We make sure it all adds up for the business as a whole.</span></p>
+        <p><strong>Connect it to the whole business.</strong> Including Amazon, your own site and retail, so it all adds up for the business as a whole.</p>
       </div>
     </div>
 
@@ -292,12 +320,21 @@
   <section class="section side">
     <span class="label label-lede">WE&rsquo;VE CHOSEN A SIDE. IT&rsquo;S YOURS.</span>
 
-    <p class="side-lede">We judge TikTok Shop by what it adds to your business as a whole.</p>
+    <p class="side-lede">Platforms, agencies and internal teams each optimise to their own numbers and targets. We judge TikTok Shop by what it adds to your business as a whole.</p>
 
-    <div class="pillars measure">
-      <p><strong>Growth.</strong> Acquire and retain the right customers.</p>
-      <p><strong>Profitability.</strong> Grow with discipline across your wider business.</p>
-      <p><strong>Brand equity.</strong> Strengthen long-term value beyond short-term sales.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <p class="pillar-label">Growth.</p>
+        <p>Acquire and retain the right customers.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-label">Profitability.</p>
+        <p>Grow with discipline across your wider business.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-label">Brand equity.</p>
+        <p>Strengthen long-term value beyond short-term sales.</p>
+      </div>
     </div>
 
     <p class="independence measure">We are independent and evidence-led by design, with no commercial incentive to favour any platform, retailer, agency or measurement tool.</p>
@@ -321,8 +358,8 @@
     <span class="label">LED BY</span>
 
     <div class="bios measure">
-      <p><strong>Nnenna Onuba.</strong> Former Rothschild M&amp;A banker and consumer investor. Ran LBB Skin, co-led the sale of Nailberry, and has worked with hundreds of beauty operators through the 100 Allies Foundation.</p>
-      <p><strong>Charlotte Skornik.</strong> Six years inside TikTok, most recently Head of Client Measurement, UK &amp; Benelux. Expert in halo, incrementality and cross-channel measurement.</p>
+      <p><a class="bio-link" href="https://www.linkedin.com/in/nnennaonuba/" target="_blank" rel="noopener noreferrer">Nnenna Onuba</a>. Former Rothschild M&amp;A banker and consumer investor. Ran LBB Skin, co-led the sale of Nailberry, and has worked with hundreds of beauty operators through the 100 Allies Foundation.</p>
+      <p><a class="bio-link" href="https://uk.linkedin.com/in/charlotteskornik" target="_blank" rel="noopener noreferrer">Charlotte Skornik</a>. Six years inside TikTok, most recently Head of Client Measurement, UK &amp; Benelux. Expert in halo, incrementality and cross-channel measurement.</p>
     </div>
 
     <p class="specialists measure">We bring in senior specialists where a brand needs them.</p>
