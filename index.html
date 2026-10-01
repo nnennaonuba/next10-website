@@ -3,11 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NEXT10</title>
-<meta name="description" content="NEXT10 — a commercial intelligence lab for the next era of social commerce.">
+<title>Next10 Labs | Commercial and measurement advisory for TikTok Shop</title>
+<meta name="description" content="Next10 Labs is an independent commercial and measurement advisory helping consumer brands grow profitably on TikTok Shop and connect it to the whole business.">
+<meta property="og:title" content="Next10 Labs | Commercial and measurement advisory for TikTok Shop">
+<meta property="og:description" content="Next10 Labs is an independent commercial and measurement advisory helping consumer brands grow profitably on TikTok Shop and connect it to the whole business.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://next10labs.ai">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://tally.so/widgets/embed.js"></script>
 <style>
   :root {
     --cream: #FAF6EC;
@@ -29,6 +34,7 @@
   body {
     font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   main {
@@ -45,46 +51,19 @@
     margin: 0 0 clamp(40px, 6vh, 72px);
   }
 
-  .proposition {
-    font-size: clamp(30px, 4.6vw, 48px);
-    font-weight: 700;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    margin: 0 0 clamp(36px, 6vh, 64px);
-    max-width: 29ch;
-  }
+  /* ---- shared text primitives ---- */
 
-  .body-copy {
-    margin: 0 0 clamp(48px, 8vh, 88px);
-  }
-
-  .body-copy p {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    line-height: 1.7;
-    color: var(--ink);
-    margin: 0 0 22px;
+  .measure {
     max-width: 62ch;
   }
 
-  .body-copy p:last-child {
-    margin-bottom: 0;
-  }
-
-  .body-copy .questions {
+  .body-copy p,
+  .measure p {
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink);
     margin: 0;
-  }
-
-  .body-copy .questions p {
-    margin: 0 0 6px;
-  }
-
-  .body-copy .questions p:last-child {
-    margin-bottom: 0;
-  }
-
-  .block {
-    margin: 0 0 clamp(40px, 6vh, 64px);
   }
 
   .label {
@@ -96,37 +75,12 @@
     margin: 0 0 16px;
   }
 
-  .research-title {
-    font-size: clamp(17px, 1.8vw, 19px);
-    font-weight: 500;
-    line-height: 1.5;
-    color: var(--ink);
-    margin: 0 0 8px;
-    max-width: 60ch;
-  }
-
   .muted {
     font-size: 15px;
     font-weight: 400;
+    line-height: 1.6;
     color: var(--ink-soft);
     margin: 0;
-  }
-
-  .block p {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    line-height: 1.7;
-    color: var(--ink);
-    margin: 0 0 12px;
-    max-width: 62ch;
-  }
-
-  .block p:last-child {
-    margin-bottom: 0;
-  }
-
-  .block strong {
-    font-weight: 700;
   }
 
   .email {
@@ -143,42 +97,238 @@
     color: var(--yellow);
   }
 
+  /* ---- section rhythm ---- */
+
+  .section {
+    margin: 0;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--hairline);
+    margin: clamp(44px, 6vh, 55px) 0;
+  }
+
+  /* ---- opening section ---- */
+
+  .proposition {
+    font-size: clamp(30px, 4.6vw, 48px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 0 0 clamp(32px, 5vh, 48px);
+    max-width: 30ch;
+  }
+
+  .opening .body-copy {
+    margin: 0 0 clamp(40px, 6vh, 64px);
+  }
+
+  .services {
+    margin: 0 0 clamp(48px, 7vh, 72px);
+  }
+
+  .service {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    column-gap: 18px;
+    margin: 0 0 clamp(28px, 4vh, 40px);
+    max-width: 62ch;
+  }
+
+  .service:last-child {
+    margin-bottom: 0;
+  }
+
+  .service .num {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    padding-top: 3px;
+  }
+
+  .service p {
+    font-size: clamp(17px, 1.8vw, 19px);
+    font-weight: 600;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .service p .supporting {
+    font-weight: 400;
+  }
+
+  .conclusion {
+    font-size: clamp(19px, 2.4vw, 24px);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 38ch;
+  }
+
+  /* ---- chosen a side section ---- */
+
+  .label-lede {
+    font-size: clamp(16px, 1.9vw, 19px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--yellow);
+    margin: 0 0 18px;
+  }
+
+  .side-lede {
+    font-size: clamp(17px, 1.8vw, 19px);
+    font-weight: 500;
+    line-height: 1.55;
+    margin: 0 0 clamp(40px, 6vh, 56px);
+    max-width: 56ch;
+  }
+
+  .pillars {
+    margin: 0 0 clamp(44px, 6vh, 60px);
+  }
+
+  .pillars p {
+    margin: 0 0 16px;
+  }
+
+  .pillars p:last-child {
+    margin-bottom: 0;
+  }
+
+  .independence {
+    margin: 0;
+  }
+
+  /* ---- research section ---- */
+
+  .research-title {
+    font-size: clamp(19px, 2.2vw, 23px);
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 14px;
+    max-width: 58ch;
+  }
+
+  .research .muted {
+    margin: 0 0 clamp(28px, 4vh, 40px);
+    max-width: 58ch;
+  }
+
+  .launch {
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+
+  /* ---- led by section ---- */
+
+  .bios {
+    margin: 0 0 clamp(40px, 6vh, 56px);
+  }
+
+  .bios p {
+    margin: 0 0 clamp(28px, 4vh, 40px);
+  }
+
+  .bios p:last-child {
+    margin-bottom: 0;
+  }
+
+  .specialists {
+    margin: 0 0 clamp(36px, 5vh, 48px);
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
   @media (max-width: 560px) {
-    .proposition {
+    .proposition,
+    .conclusion,
+    .side-lede,
+    .research-title {
       max-width: none;
+    }
+
+    .divider {
+      margin: 28px 0;
     }
   }
 </style>
 </head>
 <body>
 <main>
-  <p class="brand">NEXT10</p>
+  <p class="brand">NEXT10 LABS</p>
 
-  <h1 class="proposition">A commercial intelligence lab for the next era of social commerce.</h1>
+  <section class="section opening">
+    <h1 class="proposition">An independent commercial and measurement advisory for consumer brands on TikTok Shop.</h1>
 
-  <div class="body-copy">
-    <p>We work with consumer brands, retailers, investors and agencies to answer questions current systems can&rsquo;t.</p>
-    <p>For example:</p>
-    <div class="questions">
-      <p>What kind of customer is TikTok Shop acquiring?</p>
-      <p>How much Shop growth is genuinely incremental?</p>
-      <p>How much capital should the business allocate to TikTok Shop?</p>
+    <div class="body-copy">
+      <p>We work with consumer brand founders and leadership teams to do three things extremely well.</p>
     </div>
-  </div>
 
-  <section class="block">
-    <span class="label">RESEARCH 01</span>
-    <p class="research-title">TikTok Shop and the Unbundling of Retail</p>
-    <p class="muted">In progress.</p>
+    <div class="services">
+      <div class="service">
+        <span class="num">01</span>
+        <p>Understand your numbers and drive profitable growth on TikTok Shop, without simply buying scale</p>
+      </div>
+      <div class="service">
+        <span class="num">02</span>
+        <p>Give TikTok Shop a clear job, and work with your agency to design launches and campaigns that produce the evidence management needs</p>
+      </div>
+      <div class="service">
+        <span class="num">03</span>
+        <p>Connect it back to the whole business, including Amazon, your own site and retail. <span class="supporting">Platforms, agencies and internal teams each optimise to their own numbers and targets. We make sure it all adds up for the business as a whole.</span></p>
+      </div>
+    </div>
+
+    <p class="conclusion">So you know where to invest, what to scale and what to stop.</p>
   </section>
 
-  <section class="block">
-    <span class="label">BEHIND NEXT10</span>
-    <p>Founded by <strong>Nnenna Onuba</strong>, former Rothschild M&amp;A adviser, consumer operator and investor.</p>
-    <p>Measurement work developed with <strong>Charlotte Skornik</strong>, former Head of Client Measurement at TikTok.</p>
+  <hr class="divider">
+
+  <section class="section side">
+    <span class="label label-lede">WE&rsquo;VE CHOSEN A SIDE. IT&rsquo;S YOURS.</span>
+
+    <p class="side-lede">We judge TikTok Shop by what it adds to your business as a whole.</p>
+
+    <div class="pillars measure">
+      <p><strong>Growth.</strong> Acquire and retain the right customers.</p>
+      <p><strong>Profitability.</strong> Grow with discipline across your wider business.</p>
+      <p><strong>Brand equity.</strong> Strengthen long-term value beyond short-term sales.</p>
+    </div>
+
+    <p class="independence measure">We are independent and evidence-led by design, with no commercial incentive to favour any platform, retailer, agency or measurement tool.</p>
   </section>
 
-  <a class="email" href="mailto:hello@next10labs.ai">hello@next10labs.ai</a>
+  <hr class="divider">
+
+  <section class="section research">
+    <span class="label">RESEARCH</span>
+
+    <p class="research-title">Following the Value: TikTok Shop and the Unbundling of Beauty Retail</p>
+
+    <p class="muted">What brands and retailers need to know to grow profitably on TikTok Shop.</p>
+
+    <p class="launch">Launching October 2026. <a class="email" href="#tally-open=D4gbKR">Get it first</a></p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section led-by">
+    <span class="label">LED BY</span>
+
+    <div class="bios measure">
+      <p><strong>Nnenna Onuba.</strong> Former Rothschild M&amp;A banker and consumer investor. Ran LBB Skin, co-led the sale of Nailberry, and has worked with hundreds of beauty operators through the 100 Allies Foundation.</p>
+      <p><strong>Charlotte Skornik.</strong> Six years inside TikTok, most recently Head of Client Measurement, UK &amp; Benelux. Expert in halo, incrementality and cross-channel measurement.</p>
+    </div>
+
+    <p class="specialists measure">We bring in senior specialists where a brand needs them.</p>
+
+    <a class="email" href="mailto:hello@next10labs.ai">hello@next10labs.ai</a>
+  </section>
 </main>
 </body>
 </html>
