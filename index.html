@@ -11,15 +11,15 @@
 <meta property="og:url" content="https://next10labs.ai">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <script async src="https://tally.so/widgets/embed.js"></script>
 <style>
   :root {
-    --cream: #FAF6EC;
+    --ivory: #F7F5EF;
     --ink: #1A1917;
     --ink-soft: #6E6A5F;
     --yellow: #D9A43A;
-    --hairline: #E4DCC8;
+    --hairline: #E4DED2;
   }
 
   * { box-sizing: border-box; }
@@ -27,7 +27,7 @@
   html, body {
     margin: 0;
     padding: 0;
-    background: var(--cream);
+    background: var(--ivory);
     color: var(--ink);
   }
 
@@ -43,27 +43,16 @@
     padding: clamp(48px, 9vh, 112px) clamp(24px, 6vw, 72px) clamp(64px, 10vh, 120px);
   }
 
+  img { max-width: 100%; }
+
+  /* ---- shared primitives ---- */
+
   .brand {
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.22em;
     color: var(--yellow);
     margin: 0 0 clamp(40px, 6vh, 72px);
-  }
-
-  /* ---- shared text primitives ---- */
-
-  .measure {
-    max-width: 62ch;
-  }
-
-  .body-copy p,
-  .measure p {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0;
   }
 
   .label {
@@ -80,24 +69,25 @@
     font-weight: 400;
     line-height: 1.6;
     color: var(--ink-soft);
-    margin: 0;
+    margin: 0 0 16px;
   }
 
-  .email {
+  .link-accent {
     display: inline-block;
-    font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--ink);
     text-decoration: none;
     border-bottom: 1px solid var(--yellow);
-    padding-bottom: 3px;
+    padding-bottom: 2px;
   }
 
-  .email:hover {
+  .link-accent:hover {
     color: var(--yellow);
   }
 
-  /* ---- section rhythm ---- */
+  strong {
+    font-weight: 700;
+  }
 
   .section {
     margin: 0;
@@ -109,31 +99,36 @@
     margin: clamp(64px, 9vh, 96px) 0;
   }
 
-  /* ---- opening section ---- */
+  /* ---- hero ---- */
 
-  .proposition {
-    font-size: clamp(30px, 4.6vw, 48px);
+  .headline {
+    font-size: clamp(26px, 3.4vw, 38px);
     font-weight: 700;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    margin: 0 0 clamp(32px, 5vh, 48px);
-    max-width: 30ch;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    margin: 0 0 clamp(28px, 4vh, 40px);
+    max-width: 34ch;
   }
 
-  .opening .body-copy {
-    margin: 0 0 clamp(40px, 6vh, 64px);
+  .hero-sub {
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 clamp(40px, 6vh, 56px);
+    max-width: 54ch;
   }
 
   .services {
-    margin: 0 0 clamp(48px, 7vh, 72px);
+    margin: 0 0 clamp(44px, 6vh, 60px);
   }
 
   .service {
     display: grid;
-    grid-template-columns: 28px 1fr;
-    column-gap: 18px;
-    margin: 0 0 clamp(28px, 4vh, 40px);
-    max-width: 62ch;
+    grid-template-columns: 32px 1fr;
+    column-gap: 16px;
+    margin: 0 0 clamp(26px, 4vh, 36px);
+    max-width: 58ch;
   }
 
   .service:last-child {
@@ -148,26 +143,134 @@
   }
 
   .service p {
-    font-size: clamp(17px, 1.8vw, 19px);
-    font-weight: 400;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 500;
     line-height: 1.55;
     color: var(--ink);
     margin: 0;
   }
 
-  .service p strong {
-    font-weight: 700;
+  .connective {
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 clamp(40px, 6vh, 56px);
+    max-width: 48ch;
   }
 
   .conclusion {
     font-size: clamp(19px, 2.4vw, 24px);
     font-weight: 700;
     line-height: 1.5;
-    margin: 0;
+    margin: 0 0 clamp(48px, 7vh, 72px);
     max-width: 38ch;
   }
 
-  /* ---- chosen a side section ---- */
+  .report-lede {
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+
+  .report-sub {
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+
+  .report-cta {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* ---- who we are ---- */
+
+  .profiles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(48px, 6vw, 96px);
+    row-gap: clamp(56px, 7vh, 80px);
+    margin: 0 0 clamp(56px, 7vh, 80px);
+  }
+
+  @media (max-width: 760px) {
+    .profiles {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .portrait {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 360px;
+    aspect-ratio: 1122 / 1402;
+    object-fit: cover;
+    object-position: center 18%;
+    margin: 0 0 24px;
+  }
+
+  .profile-name {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+
+  .profile-role {
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(15px, 1.5vw, 16px);
+    color: var(--ink-soft);
+    margin: 0 0 20px;
+  }
+
+  .credentials {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+    max-width: 42ch;
+  }
+
+  .credentials li {
+    position: relative;
+    padding-left: 18px;
+    font-size: clamp(15px, 1.5vw, 16px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+
+  .credentials li:last-child {
+    margin-bottom: 0;
+  }
+
+  .credentials li::before {
+    content: "\2013";
+    position: absolute;
+    left: 0;
+    color: var(--ink-soft);
+  }
+
+  .experience-label {
+    margin-bottom: 14px;
+  }
+
+  .experience {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 72ch;
+  }
+
+  /* ---- chosen a side ---- */
 
   .label-lede {
     font-size: clamp(16px, 1.9vw, 19px);
@@ -178,11 +281,12 @@
   }
 
   .side-lede {
-    font-size: clamp(17px, 1.8vw, 19px);
-    font-weight: 500;
-    line-height: 1.55;
-    margin: 0 0 clamp(40px, 6vh, 56px);
-    max-width: 56ch;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 clamp(44px, 6vh, 60px);
+    max-width: 62ch;
   }
 
   .pillars {
@@ -191,6 +295,13 @@
     column-gap: clamp(32px, 4vw, 56px);
     row-gap: 32px;
     margin: 0 0 clamp(44px, 6vh, 60px);
+  }
+
+  @media (max-width: 820px) {
+    .pillars {
+      grid-template-columns: 1fr;
+      row-gap: clamp(28px, 4vh, 36px);
+    }
   }
 
   .pillars p {
@@ -206,18 +317,16 @@
     margin: 0 0 6px;
   }
 
-  @media (max-width: 820px) {
-    .pillars {
-      grid-template-columns: 1fr;
-      row-gap: clamp(28px, 4vh, 36px);
-    }
-  }
-
   .independence {
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink);
     margin: 0;
+    max-width: 62ch;
   }
 
-  /* ---- research section ---- */
+  /* ---- research ---- */
 
   .research-title {
     font-size: clamp(19px, 2.2vw, 23px);
@@ -228,52 +337,37 @@
     max-width: 58ch;
   }
 
-  .research .muted {
+  .research-description {
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink);
     margin: 0 0 clamp(28px, 4vh, 40px);
     max-width: 58ch;
   }
 
-  .launch {
+  .research-meta {
     font-size: 15px;
+    font-weight: 400;
     color: var(--ink-soft);
+    margin: 0 0 16px;
   }
 
-  /* ---- led by section ---- */
-
-  .bios {
-    margin: 0 0 clamp(40px, 6vh, 56px);
-  }
-
-  .bios p {
-    margin: 0 0 clamp(28px, 4vh, 40px);
-  }
-
-  .bios p:last-child {
-    margin-bottom: 0;
-  }
-
-  .specialists {
+  .research-cta {
+    font-size: 16px;
     margin: 0 0 clamp(36px, 5vh, 48px);
   }
 
-  strong {
-    font-weight: 700;
+  .talk-to-us {
+    margin: 0 0 10px;
   }
 
-  .bio-link {
-    font-weight: 700;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--yellow);
-    padding-bottom: 1px;
-  }
-
-  .bio-link:hover {
-    color: var(--yellow);
+  .email-link {
+    font-size: 16px;
   }
 
   @media (max-width: 560px) {
-    .proposition,
+    .headline,
     .conclusion,
     .side-lede,
     .research-title {
@@ -290,29 +384,68 @@
 <main>
   <p class="brand">NEXT10 LABS</p>
 
-  <section class="section opening">
-    <h1 class="proposition">An independent commercial and measurement advisory for consumer brands on TikTok Shop.</h1>
+  <section class="section hero">
+    <h1 class="headline">Leverage TikTok Shop as a key driver of whole-business growth.</h1>
 
-    <div class="body-copy">
-      <p>We work with consumer brand founders and leadership teams to do three things extremely well.</p>
-    </div>
+    <p class="hero-sub">We work with consumer brand founders and leadership teams to engineer TikTok Shop around two things that matter.</p>
 
     <div class="services">
       <div class="service">
-        <span class="num">01</span>
-        <p><strong>Grow profitably.</strong> Understand your numbers and drive profitable growth on TikTok Shop, without simply buying scale.</p>
+        <span class="num">01.</span>
+        <p>Understand your numbers and drive profitable growth.</p>
       </div>
       <div class="service">
-        <span class="num">02</span>
-        <p><strong>Give it a clear job.</strong> Work with your agency to design launches and campaigns that produce the evidence management needs.</p>
-      </div>
-      <div class="service">
-        <span class="num">03</span>
-        <p><strong>Connect it to the whole business.</strong> Including Amazon, your own site and retail, so it all adds up for the business as a whole.</p>
+        <span class="num">02.</span>
+        <p>Measure what TikTok Shop really adds across digital and retail.</p>
       </div>
     </div>
 
-    <p class="conclusion">So you know where to invest, what to scale and what to stop.</p>
+    <p class="connective">Both start by agreeing the evidence management will use to make the investment decision.</p>
+
+    <p class="conclusion">So leadership can allocate TikTok Shop investment and budget across teams with confidence.</p>
+
+    <div class="report-prompt">
+      <p class="report-lede">Following the Value:</p>
+      <p class="report-sub">the TikTok Shop report for beauty leaders.</p>
+      <p class="report-cta"><a class="link-accent" href="#tally-open=D4gbKR">Get it first &rarr;</a></p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section who-we-are">
+    <span class="label">WHO WE ARE</span>
+
+    <div class="profiles">
+      <div class="profile">
+        <img class="portrait" src="images/nnenna-onuba.webp" width="1122" height="1402" loading="lazy" alt="Portrait of Nnenna Onuba">
+        <p class="profile-name">NNENNA ONUBA</p>
+        <p class="profile-role">Brand value and investment</p>
+        <ul class="credentials">
+          <li>PwC-trained CA; 10 years in M&amp;A at Rothschild</li>
+          <li>£20bn+ in transactions</li>
+          <li>Founder/operator, LBB Skin; co-led Nailberry sale</li>
+          <li>Consumer investor; NED, British Beauty Council</li>
+        </ul>
+        <a class="link-accent" href="https://www.linkedin.com/in/nnennaonuba/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+      </div>
+
+      <div class="profile">
+        <img class="portrait" src="images/charlotte-skornik.webp" width="1122" height="1402" loading="lazy" alt="Portrait of Charlotte Skornik">
+        <p class="profile-name">CHARLOTTE SKORNIK</p>
+        <p class="profile-role">Media and measurement</p>
+        <ul class="credentials">
+          <li>6 years at TikTok; former Head of Client Measurement, UK &amp; Benelux</li>
+          <li>Halo, incrementality and cross-channel measurement</li>
+          <li>Earlier career across Quantcast, AppNexus and Intent</li>
+          <li>Built partnerships with LiveRamp, Circana and Fospha</li>
+        </ul>
+        <a class="link-accent" href="https://uk.linkedin.com/in/charlotteskornik" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+      </div>
+    </div>
+
+    <p class="label experience-label">SELECTED EXPERIENCE</p>
+    <p class="experience">TikTok &middot; Rothschild &middot; British Beauty Council &middot; PwC &middot; LBB Skin &middot; Nailberry &middot; Quantcast &middot; AppNexus &middot; Intent &middot; Capgemini</p>
   </section>
 
   <hr class="divider">
@@ -320,24 +453,24 @@
   <section class="section side">
     <span class="label label-lede">WE&rsquo;VE CHOSEN A SIDE. IT&rsquo;S YOURS.</span>
 
-    <p class="side-lede">Platforms, agencies and internal teams each optimise to their own numbers and targets. We judge TikTok Shop by what it adds to your business as a whole.</p>
+    <p class="side-lede">Platforms, agencies and internal teams each optimise to their own numbers and targets, so no one owns the whole view of TikTok Shop. We do. We work alongside your leadership team and agency to give TikTok Shop a clear job, and hold it to three tests.</p>
 
     <div class="pillars">
       <div class="pillar">
         <p class="pillar-label">Growth.</p>
-        <p>Acquire and retain the right customers.</p>
+        <p>Acquire and retain the highest-value customers.</p>
       </div>
       <div class="pillar">
         <p class="pillar-label">Profitability.</p>
-        <p>Grow with discipline across your wider business.</p>
+        <p>Drive true contribution discipline across the wider business.</p>
       </div>
       <div class="pillar">
         <p class="pillar-label">Brand equity.</p>
-        <p>Strengthen long-term value beyond short-term sales.</p>
+        <p>Turn TikTok learning into stronger long-term brand value.</p>
       </div>
     </div>
 
-    <p class="independence measure">We are independent and evidence-led by design, with no commercial incentive to favour any platform, retailer, agency or measurement tool.</p>
+    <p class="independence">We are independent and evidence-led by design, with no commercial incentive to favour any platform, retailer, agency or measurement tool.</p>
   </section>
 
   <hr class="divider">
@@ -347,24 +480,15 @@
 
     <p class="research-title">Following the Value: TikTok Shop and the Unbundling of Beauty Retail</p>
 
-    <p class="muted">What brands and retailers need to know to grow profitably on TikTok Shop.</p>
+    <p class="research-description">What brands and retailers need to know to grow profitably on TikTok Shop.</p>
 
-    <p class="launch">Launching October 2026. <a class="email" href="#tally-open=D4gbKR">Get it first</a></p>
-  </section>
+    <p class="research-meta">Launching October 2026.</p>
 
-  <hr class="divider">
+    <p class="research-cta"><a class="link-accent" href="#tally-open=D4gbKR">Get it first</a></p>
 
-  <section class="section led-by">
-    <span class="label">LED BY</span>
+    <p class="research-meta talk-to-us">Talk to us</p>
 
-    <div class="bios measure">
-      <p><a class="bio-link" href="https://www.linkedin.com/in/nnennaonuba/" target="_blank" rel="noopener noreferrer">Nnenna Onuba</a>. Former Rothschild M&amp;A banker and consumer investor. Ran LBB Skin, co-led the sale of Nailberry, and has worked with hundreds of beauty operators through the 100 Allies Foundation.</p>
-      <p><a class="bio-link" href="https://uk.linkedin.com/in/charlotteskornik" target="_blank" rel="noopener noreferrer">Charlotte Skornik</a>. Six years inside TikTok, most recently Head of Client Measurement, UK &amp; Benelux. Expert in halo, incrementality and cross-channel measurement.</p>
-    </div>
-
-    <p class="specialists measure">We bring in senior specialists where a brand needs them.</p>
-
-    <a class="email" href="mailto:hello@next10labs.ai">hello@next10labs.ai</a>
+    <a class="link-accent email-link" href="mailto:hello@next10labs.ai">hello@next10labs.ai</a>
   </section>
 </main>
 </body>
