@@ -188,16 +188,16 @@
 
   /* ---- who we are ---- */
 
-  .profiles {
+  .founder-profile {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: minmax(260px, 340px) 1fr;
     column-gap: clamp(48px, 6vw, 96px);
-    row-gap: clamp(56px, 7vh, 80px);
+    align-items: start;
     margin: 0 0 clamp(56px, 7vh, 80px);
   }
 
-  @media (max-width: 760px) {
-    .profiles {
+  @media (max-width: 680px) {
+    .founder-profile {
       grid-template-columns: 1fr;
     }
   }
@@ -257,8 +257,17 @@
     color: var(--ink-soft);
   }
 
-  .experience-label {
+  .sub-label {
     margin-bottom: 14px;
+  }
+
+  .specialist-statement {
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 clamp(44px, 6vh, 60px);
+    max-width: 58ch;
   }
 
   .experience {
@@ -416,9 +425,9 @@
   <section class="section who-we-are">
     <span class="label">WHO WE ARE</span>
 
-    <div class="profiles">
-      <div class="profile">
-        <img class="portrait" src="images/nnenna-onuba.webp" width="1122" height="1402" loading="lazy" alt="Portrait of Nnenna Onuba">
+    <div class="founder-profile">
+      <img class="portrait" src="images/nnenna-onuba.webp" width="1122" height="1402" loading="lazy" alt="Portrait of Nnenna Onuba">
+      <div class="founder-text">
         <p class="profile-name">NNENNA ONUBA</p>
         <p class="profile-role">Brand value and investment</p>
         <ul class="credentials">
@@ -429,23 +438,13 @@
         </ul>
         <a class="link-accent" href="https://www.linkedin.com/in/nnennaonuba/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
       </div>
-
-      <div class="profile">
-        <img class="portrait" src="images/charlotte-skornik.webp" width="1122" height="1402" loading="lazy" alt="Portrait of Charlotte Skornik">
-        <p class="profile-name">CHARLOTTE SKORNIK</p>
-        <p class="profile-role">Media and measurement</p>
-        <ul class="credentials">
-          <li>6 years at TikTok; former Head of Client Measurement, UK &amp; Benelux</li>
-          <li>Halo, incrementality and cross-channel measurement</li>
-          <li>Earlier career across Quantcast, AppNexus and Intent</li>
-          <li>Built partnerships with LiveRamp, Circana and Fospha</li>
-        </ul>
-        <a class="link-accent" href="https://uk.linkedin.com/in/charlotteskornik" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
-      </div>
     </div>
 
-    <p class="label experience-label">SELECTED EXPERIENCE</p>
-    <p class="experience">TikTok &middot; Rothschild &middot; British Beauty Council &middot; PwC &middot; LBB Skin &middot; Nailberry &middot; Quantcast &middot; AppNexus &middot; Intent &middot; Capgemini</p>
+    <p class="label sub-label">SPECIALIST BENCH</p>
+    <p class="specialist-statement">We bring in senior measurement, data and commercial specialists where the question requires them.</p>
+
+    <p class="label sub-label">SELECTED EXPERIENCE</p>
+    <p class="experience">Rothschild &middot; British Beauty Council &middot; PwC &middot; LBB Skin &middot; Nailberry</p>
   </section>
 
   <hr class="divider">
