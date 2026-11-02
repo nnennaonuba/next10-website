@@ -179,8 +179,8 @@ details .body{display:grid;gap:12px;margin-top:12px;max-width:76ch}
 
   <div class="intro">
     <p class="eyebrow" style="margin-top:28px">Free tool from Following the Value</p>
-    <h1 style="margin-top:6px">Which of your TikTok Shop offers actually make money?</h1>
-    <p class="lede">Your biggest seller may not be your most profitable offer. Use your own figures to see what each product and bundle earns after selling costs and ads, the ROAS it needs to break even, and which offers deserve more investment before your next peak. We call this the <b>MVM view: margin, velocity and materiality</b>, or what each offer earns, how quickly it sells, and how much it matters.</p>
+    <h1 style="margin-top:6px">Which products and bundles should you push this Black Friday?</h1>
+    <p class="lede">Your biggest seller may not be your most profitable offer. Use your own figures to see what each product and bundle earns after selling costs and ads, the ROAS it needs to break even, and which to push, reprice, rebundle or test before Black Friday, and why. We call this the <b>MVM view: margin, velocity and materiality</b>, or what each offer earns, how quickly it sells, and how much it matters.</p>
 
     <div class="gets">
       <div><b>What each offer earns</b><span>Per order, after product cost, platform and creator commission, fulfilment, returns, promotions and ads.</span></div>
@@ -246,7 +246,7 @@ details .body{display:grid;gap:12px;margin-top:12px;max-width:76ch}
 
     <div class="keyrow">
       <div class="key k-hero"><b>True hero</b>Sells fast and earns well. A candidate to back.</div>
-      <div class="key k-work"><b>Workhorse</b>Sells fast, earns little or loses. A candidate to reprice or rebundle.</div>
+      <div class="key k-work"><b>Workhorse</b>Sells fast on a thin margin or a loss. Push the ones that earn; reprice or rebundle the ones that lose.</div>
       <div class="key k-gold"><b>Potential gold</b>Earns well, sells slowly. A candidate to test.</div>
       <div class="key k-stop"><b>Stop or prove</b>Slow and thin. Stop it, or prove why to keep it.</div>
     </div>
@@ -357,11 +357,11 @@ details .body{display:grid;gap:12px;margin-top:12px;max-width:76ch}
     </div>
 
     <div class="group">
-      <h3>What matters this peak?</h3>
+      <h3>What is your goal this Black Friday?</h3>
       <p style="color:var(--muted);max-width:70ch">Early momentum can be the right call. If you choose it, set the loss per order you are prepared to fund, and the check shows the ROAS target that keeps you inside it.</p>
       <div class="goal">
         <label><input type="radio" name="goal" id="g_profit" value="profit"> Profit: break even or better</label>
-        <label><input type="radio" name="goal" id="g_growth" value="growth"> Momentum: accept a loss of</label>
+        <label><input type="radio" name="goal" id="g_growth" value="growth"> Momentum, such as winning new customers: accept a loss of</label>
         <div class="unit"><em class="cursym">£</em><input id="a_loss" type="number" step="0.1" min="0" aria-label="Loss per order you will accept"><em>/order</em></div>
       </div>
     </div>
@@ -408,7 +408,7 @@ details .body{display:grid;gap:12px;margin-top:12px;max-width:76ch}
   <section>
     <div class="cta">
       <h2>Bring us the decision you're facing.</h2>
-      <p>What good looks like for your business sits inside your business. If the check raises a question you need answered before peak, talk to us.</p>
+      <p>The check shows which offers to push. It can't tell you whether TikTok Shop is doing its job for your business: winning customers worth keeping, growing retail, launching new products, and how you'll measure it. That's the work we do with brands. The first conversation is on us.</p>
       <p class="addr" id="addr">hello@next10labs.ai</p>
       <div class="actions"><a class="btn" style="background:var(--bg);color:var(--wine);border-color:var(--bg);text-decoration:none" href="mailto:hello@next10labs.ai?subject=Profitability%20Check%3A%20a%20decision%20I%27m%20facing">Email us about your decision</a><button class="small" id="copyAddr">Copy email address</button><span class="status" id="addrStatus" style="color:inherit" role="status"></span></div>
     </div>
@@ -529,6 +529,7 @@ function x(v){return v===null?"":v.toFixed(1)+"x"}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 var QNAME={hero:"True hero",work:"Workhorse",gold:"Potential gold",stop:"Stop or prove"};
 var QACT={hero:"Candidate to back",work:"Candidate to reprice or rebundle",gold:"Candidate to test",stop:"Stop, or prove why to keep it"};
+function act(o){return o.q==="work"&&o.after>=0?"Earns on a thin margin. Push it, and look at price or pack":QACT[o.q]}
 var TYPES={single:"Single",multi:"Multipack",bundle:"Bundle / set"};
 function mark(o){return o.basis==="noads"?" †":o.basis==="noroas"?" ‡":""}
 function beText(o,val){
@@ -595,7 +596,7 @@ function renderResults(){
       '<td class="'+(o.margin<0?"neg":"")+'">'+pct(o.margin)+"</td>"+
       '<td class="'+(o.total<0?"neg":"")+'">'+money(o.total)+"</td>"+
       "<td>"+beText(o,o.be)+"</td><td"+gap+">"+(o.roas?x(o.roas):o.ad>0?"Not entered":"No ads")+"</td><td>"+tg+"</td>"+
-      '<td class="l"><span class="chip c-'+o.q+'">'+QNAME[o.q]+"</span>"+(o.after<0?'<span class="chip c-loss">Loses money</span>':"")+'<span class="sub">'+QACT[o.q]+"</span></td></tr>";
+      '<td class="l"><span class="chip c-'+o.q+'">'+QNAME[o.q]+"</span>"+(o.after<0?'<span class="chip c-loss">Loses money</span>':"")+'<span class="sub">'+act(o)+"</span></td></tr>";
   }).join("");
   tf.innerHTML="<tr><td>All offers"+(unalloc?'<span class="sub">incl. '+money(unalloc)+" spend with no orders</span>":"")+"</td><td>"+O.toLocaleString("en-GB")+"</td><td>"+money(G/O,2)+"</td><td></td><td>"+money(T/O,2)+"</td><td>"+pct(T/G)+'</td><td class="'+(T<0?"neg":"")+'">'+money(T)+'</td><td colspan="4"></td></tr>';
   drawChart(R);renderWhatIf();
@@ -651,7 +652,7 @@ function drawChart(R){
     var c=el("circle",{cx:cx,cy:cy,r:r,fill:o.type==="bundle"?"var(--surface)":col,"fill-opacity":o.type==="bundle"?0.6:0.9,stroke:o.type==="bundle"?col:"var(--surface)","stroke-width":o.type==="bundle"?2.2:1,tabindex:0,"aria-label":o.name});
     c.style.cursor="pointer";
     function show(){var bb=svg.getBoundingClientRect(),k=bb.width/W;
-      tip.innerHTML="<b>"+esc(o.name)+"</b><br>"+o.orders.toLocaleString("en-GB")+" orders · "+money(o.gmv)+" sales<br>"+money(o.after,2)+" per order after marketing ("+pct(o.margin)+")<br>"+QNAME[o.q]+": "+QACT[o.q];
+      tip.innerHTML="<b>"+esc(o.name)+"</b><br>"+o.orders.toLocaleString("en-GB")+" orders · "+money(o.gmv)+" sales<br>"+money(o.after,2)+" per order after marketing ("+pct(o.margin)+")<br>"+QNAME[o.q]+": "+act(o);
       tip.style.left=(cx*k)+"px";tip.style.top=((cy-r)*k)+"px";tip.hidden=false;}
     c.addEventListener("pointerenter",show);c.addEventListener("focus",show);
     c.addEventListener("pointerleave",function(){tip.hidden=true});c.addEventListener("blur",function(){tip.hidden=true});
@@ -850,7 +851,7 @@ function asText(){
   R.sort(function(a,b){return b.gmv-a.gmv}).forEach(function(o){
     var basis=o.basis==="tt"?"reported ROAS basis":o.basis==="noads"?"no ads, sales basis":"ROAS not entered, sales basis";
     var be=o.beState==="loss"?"none (loses money before ads)":o.beState==="zero"?"none (nothing left for ads)":o.be.toFixed(2);
-    lines.push([o.name,TYPES[o.type],o.orders,Math.round(o.gmv),o.price.toFixed(2),o.aff+"%",o.c.product.toFixed(2)+(o.costOverride!==null?" (entered)":" (default %)"),o.c.fulfil.toFixed(2)+(o.fulfilOverride!==null?" (entered)":" (default)"),o.before.toFixed(2),o.after.toFixed(2),pct(o.margin,1),be,basis,o.roas?o.roas.toFixed(2):"n/a",o.target===null?"none":o.target.toFixed(2),QNAME[o.q]+" ("+QACT[o.q].toLowerCase()+")"].join(" | "));
+    lines.push([o.name,TYPES[o.type],o.orders,Math.round(o.gmv),o.price.toFixed(2),o.aff+"%",o.c.product.toFixed(2)+(o.costOverride!==null?" (entered)":" (default %)"),o.c.fulfil.toFixed(2)+(o.fulfilOverride!==null?" (entered)":" (default)"),o.before.toFixed(2),o.after.toFixed(2),pct(o.margin,1),be,basis,o.roas?o.roas.toFixed(2):"n/a",o.target===null?"none":o.target.toFixed(2),QNAME[o.q]+" ("+act(o).toLowerCase()+")"].join(" | "));
   });
   if(res.noOrders.length)lines.push("Ad spend on offers with no orders: "+res.noOrders.map(function(n){return n.name+" "+c+Math.round(n.ad)}).join(", ")+".");
   if(res.bad.length)lines.push("Rows left out because of input problems: "+res.bad.map(function(b){return b.name}).join(", ")+".");
