@@ -237,6 +237,13 @@ details .ref{display:block;font-family:var(--mono);font-size:10.5px;letter-spaci
 .bench{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin-top:22px;font-size:15px;color:#D9C7CE}
 .about a.textlink{color:var(--pinkline);border-bottom-color:#E28BA866}
 
+.abouttitle{font-size:clamp(34px,4vw,48px);line-height:1.05;margin-bottom:28px}
+.aboutrule{margin-top:28px;padding-top:24px;border-top:1px solid #E28BA866}
+.about .aname{font-size:clamp(34px,4vw,48px);font-weight:400;margin:8px 0 4px}
+.aboutfoot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:26px;padding-top:22px;border-top:1px solid #E28BA866;font-size:14.5px;color:#D9C7CE}
+.aboutfoot > div + div{border-left:1px solid #ffffff22;padding-left:28px}
+.aboutfoot p{margin-top:8px}
+.aboutfoot > div + div p{margin-top:0}
 /* final */
 .final{background:var(--paper-2)}
 .final .wrap{padding-block:72px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:center}
@@ -256,6 +263,8 @@ footer{font-size:12.5px;color:var(--muted);padding-block:26px 40px;border-top:1p
   .hero .actions .btn{flex:1 1 100%}
   .report-card .two,.enqform .two,.promptbox .two{grid-template-columns:minmax(0,1fr)}
   .figs{grid-template-columns:minmax(0,1fr)}
+  .aboutfoot{grid-template-columns:minmax(0,1fr)}
+  .aboutfoot > div + div{border-left:0;padding-left:0}
   .figs div + div{border-left:0;border-top:1px solid #E28BA855}
   .roas .row{grid-template-columns:110px minmax(0,1fr) 48px}
 }
@@ -567,27 +576,22 @@ footer{font-size:12.5px;color:var(--muted);padding-block:26px 40px;border-top:1p
 <div class="about" id="about"><div class="wrap">
   <div class="aboutgrid">
     <div>
+      <h2 class="abouttitle">About Next10 Labs</h2>
       <img class="photo" src="/images/nnenna-onuba.webp" alt="Portrait of Nnenna Onuba">
-      <div class="who">
-        <div class="label">Founded and led by</div>
-        <h3>Nnenna Onuba</h3>
-        <div class="cap">Founder, Next10 Labs</div>
-        <p class="board">Nnenna is a Non-Executive Board Director of the British Beauty Council and was named one of Brummell's 30 Inspirational Women in the City in 2026.</p>
-        <a class="textlink" style="display:inline-block;margin-top:16px" href="https://www.linkedin.com/in/nnennaonuba/" target="_blank" rel="noopener">Connect on LinkedIn →</a>
-      </div>
     </div>
     <div>
-      <h2>About Next10 Labs</h2>
-      <p class="leadp">Next10 Labs brings together what consumer businesses rarely find in one place: independent research, commercial judgement, measurement expertise and a network of senior specialists, starting with TikTok Shop.</p>
+      <p class="leadp" style="margin-top:0">Next10 Labs brings together what consumer businesses rarely find in one place: independent research, commercial judgement, measurement expertise and a network of senior specialists, starting with TikTok Shop.</p>
       <p class="bodyp">We combine our own analytical tools and know-how with the best emerging solutions and specialist expertise. With no platform, agency or software to sell, we find the most practical, cost-effective route to your goals.</p>
-      <div class="figs">
-        <div><b>20+</b><span>YEARS' CAREER</span></div>
-        <div><b>£20bn+</b><span>OF TRANSACTIONS</span></div>
-        <div><b>10</b><span>YEARS AT ROTHSCHILD</span></div>
+      <div class="aboutrule">
+        <div class="label">Founded and led by</div>
+        <h3 class="aname">Nnenna Onuba</h3>
+        <p class="bodyp">Over a career spanning more than two decades, Nnenna trained as a chartered accountant at PwC, spent ten years in mergers and acquisitions at investment bank Rothschild, working on more than £20bn of transactions, founded and ran beauty brand LBB Skin, co-led the sale of Nailberry, and invests in consumer businesses.</p>
       </div>
-      <p class="bodyp" style="margin-top:24px">Over a career spanning more than two decades, Nnenna trained as a chartered accountant at PwC, spent ten years in mergers and acquisitions at investment bank Rothschild, working on more than £20bn of transactions, founded and ran beauty brand LBB Skin, co-led the sale of Nailberry, and invests in consumer businesses.</p>
       <p class="statement">She brings a banker's eye for where value is created, lost and frequently misread, and a founder's understanding of what it takes to bring people together and act on the evidence.</p>
-      <div class="bench"><span class="label">Specialist Bench</span><span>We draw on a network of senior measurement, data and commercial specialists, bringing in the expertise each question requires.</span></div>
+      <div class="aboutfoot">
+        <div><span class="label">Specialist Bench</span><p>We draw on a network of senior measurement, data and commercial specialists, bringing in the expertise each question requires.</p></div>
+        <div><p>Nnenna is a Non-Executive Board Director of the British Beauty Council and was named one of Brummell's 30 Inspirational Women in the City in 2026.</p><a class="textlink" style="display:inline-block;margin-top:12px" href="https://www.linkedin.com/in/nnennaonuba/" target="_blank" rel="noopener">Connect on LinkedIn →</a></div>
+      </div>
     </div>
   </div>
 </div></div>
