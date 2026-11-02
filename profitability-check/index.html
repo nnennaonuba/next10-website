@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free TikTok Shop Profitability Check | Next10 Labs</title>
+<meta name="description" content="Use your own figures to see what each TikTok Shop product and bundle earns after selling costs and ads, and the ROAS it needs to break even. Free, private, from Following the Value.">
+<link rel="canonical" href="https://next10labs.ai/profitability-check/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column in the Following the Value house style. Exhibit band, the read, then the numbers that drive it. */
+:root{
+  --bg:#FAF6F2; --surface:#FFFFFF; --ink:#2B1820; --muted:#6E5F66; --rule:#B9A27E; --hair:#E8DED6;
+  --wine:#5B0B2B; --pink:#D2507B; --ochre:#C4843A; --loss:#B42318; --gain:#2F6B3F; --field:#FFFDFB;
+  --display:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#181015; --surface:#22171D; --ink:#F2E8EC; --muted:#B4A3AB; --rule:#8D7A5C; --hair:#3A2A31;
+  --wine:#E9A3BC; --pink:#F07399; --ochre:#E2A75C; --loss:#FF8A80; --gain:#86C996; --field:#1E141A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#181015; --surface:#22171D; --ink:#F2E8EC; --muted:#B4A3AB; --rule:#8D7A5C; --hair:#3A2A31;
+  --wine:#E9A3BC; --pink:#F07399; --ochre:#E2A75C; --loss:#FF8A80; --gain:#86C996; --field:#1E141A; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.top{height:10px;background:var(--wine)}
+.wrap{max-width:1080px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--wine)}
+.masthead{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:12px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,5.5vw,54px);line-height:1.05;color:var(--wine);margin:28px 0 12px;text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(24px,3.4vw,32px);line-height:1.15;color:var(--wine);margin:0;text-wrap:balance}
+h3{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--wine);margin:0}
+p{margin:0}
+.lede{max-width:64ch;font-size:17px;color:var(--ink)}
+.intro{display:grid;gap:16px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--muted)}
+.trust span{display:inline-flex;align-items:center;gap:7px}
+.trust span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--wine)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+button,.btn{font:inherit;font-size:14px;font-weight:500;border-radius:4px;border:1px solid var(--wine);background:var(--wine);color:var(--bg);padding:9px 14px;cursor:pointer}
+button.ghost{background:transparent;color:var(--wine)}
+button.small{font-size:13px;padding:6px 10px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+section{margin-top:48px;display:grid;gap:20px}
+.sechead{display:grid;gap:6px;border-top:1px solid var(--rule);padding-top:18px}
+.sechead p{color:var(--muted);max-width:70ch}
+.banner{font-size:13px;color:var(--ink);background:color-mix(in srgb,var(--ochre) 14%,transparent);border-left:3px solid var(--ochre);padding:10px 14px}
+.banner[hidden]{display:none}
+
+/* summary */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.tile{background:var(--surface);padding:16px;display:grid;gap:4px;align-content:start;min-width:0}
+.tile .k{font-size:12px;color:var(--muted)}
+.tile .v{font-family:var(--display);font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
+.tile .s{font-size:13px;color:var(--muted)}
+.neg{color:var(--loss)} .pos{color:var(--gain)}
+.findings{display:grid;gap:10px;margin:0;padding:0;list-style:none;max-width:78ch}
+.findings li{padding-left:18px;position:relative}
+.findings li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--pink)}
+
+/* chart */
+.exhibit{background:var(--surface);border:1px solid var(--hair);padding:20px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px}
+.exhibit .side{display:grid;gap:18px;align-content:start;border-right:1px solid var(--hair);padding-right:20px}
+.quote{font-family:var(--display);font-size:22px;line-height:1.2;color:var(--wine)}
+.legend{display:grid;gap:10px;font-size:13px;font-weight:600}
+.legend span{display:flex;align-items:center;gap:10px}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.d-single{background:var(--wine)} .d-multi{background:var(--pink)} .d-bundle{border:2px solid var(--ochre)}
+.chartbox{position:relative;min-width:0}
+.chartbox svg{width:100%;height:auto;display:block;overflow:visible}
+.chartnote{font-size:12px;color:var(--muted);margin-top:6px}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.4;padding:8px 10px;border-radius:4px;max-width:240px;transform:translate(-50%,calc(-100% - 12px))}
+.tip b{font-weight:600}
+.keyrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.key{border-top:3px solid var(--hair);padding-top:8px;display:grid;gap:2px;font-size:13px;min-width:0}
+.key b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--wine)}
+.key.k-hero{border-color:var(--wine)} .key.k-work{border-color:var(--pink)} .key.k-gold{border-color:var(--ochre)} .key.k-stop{border-color:var(--muted)}
+
+/* tables */
+.scroll{overflow-x:auto;border:1px solid var(--hair);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:right;padding:10px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;vertical-align:bottom}
+td{padding:9px 10px;border-bottom:1px solid var(--hair);text-align:right;white-space:nowrap}
+th:first-child,td:first-child,th.l,td.l{text-align:left}
+tbody tr:last-child td{border-bottom:none}
+tfoot td{border-top:1px solid var(--rule);font-weight:600;border-bottom:none}
+.chip{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.03em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.c-hero{color:var(--wine)} .c-work{color:var(--pink)} .c-gold{color:var(--ochre)} .c-stop{color:var(--muted)}
+.c-loss{color:var(--loss);margin-left:6px}
+.sub{display:block;font-size:11.5px;color:var(--muted)}
+.inputs td{padding:5px 6px}
+.inputs input,.inputs select{font:inherit;font-size:13.5px;width:100%;min-width:76px;padding:6px 7px;border:1px solid var(--hair);border-radius:3px;background:var(--field);color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.inputs input.name{text-align:left;min-width:180px}
+.inputs select{text-align:left;min-width:118px}
+.del{background:transparent;border:none;color:var(--muted);font-size:18px;line-height:1;padding:4px 8px}
+.del:hover{color:var(--loss)}
+
+/* costs */
+.costs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px 18px}
+.field{display:grid;gap:5px;min-width:0}
+.field label{font-size:13px;font-weight:500}
+.field small{font-size:12px;color:var(--muted)}
+.unit{display:flex;align-items:center;border:1px solid var(--hair);border-radius:3px;background:var(--field)}
+.unit input,.unit select{font:inherit;border:none;background:transparent;color:var(--ink);padding:8px 10px;width:100%;min-width:0;font-variant-numeric:tabular-nums}
+.unit em{font-style:normal;color:var(--muted);padding:0 10px;font-size:13px}
+.group{display:grid;gap:14px;background:var(--surface);border:1px solid var(--hair);padding:18px}
+.goal{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.goal label{display:inline-flex;gap:8px;align-items:center;font-size:14px}
+.goal .unit{width:150px}
+textarea{font-family:var(--mono);font-size:12.5px;width:100%;min-height:130px;padding:10px;border:1px solid var(--hair);border-radius:3px;background:var(--field);color:var(--ink)}
+code{font-family:var(--mono);font-size:12.5px}
+details{background:var(--surface);border:1px solid var(--hair);padding:14px 18px}
+details summary{cursor:pointer;font-weight:600;color:var(--wine)}
+details .body{display:grid;gap:12px;margin-top:12px;max-width:76ch}
+.formula{font-family:var(--mono);font-size:12.5px;background:var(--bg);padding:10px 12px;border-left:2px solid var(--rule);overflow-x:auto}
+.cta{background:var(--wine);color:var(--bg);padding:28px;display:grid;gap:12px}
+.cta h2{color:var(--bg)}
+.cta p{max-width:62ch;opacity:.92}
+.cta .addr{font-family:var(--mono);font-size:15px;user-select:all}
+.cta button{background:var(--bg);color:var(--wine);border-color:var(--bg)}
+.foot{margin-top:28px;border-top:1px solid var(--rule);padding-top:12px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.status{font-size:13px;color:var(--gain);min-height:1.2em}
+
+.samplebar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:color-mix(in srgb,var(--ochre) 14%,transparent);border-left:3px solid var(--ochre);padding:12px 14px;font-size:14px}
+.gets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.gets div{background:var(--surface);padding:14px 16px;display:grid;gap:4px;align-content:start;min-width:0}
+.gets b{font-family:var(--display);font-weight:500;font-size:19px;color:var(--wine);line-height:1.2}
+.gets span{font-size:13.5px;color:var(--muted)}
+.routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.route{display:grid;gap:6px;align-content:start;text-align:left;background:var(--surface);color:var(--ink);border:1px solid var(--hair);border-top:3px solid var(--wine);border-radius:0;padding:14px 16px;font-weight:400;min-width:0}
+.route:hover{border-color:var(--wine)}
+.route b{font-size:15.5px;font-weight:600;color:var(--wine)}
+.route span{font-size:13.5px;color:var(--muted);line-height:1.45}
+.route em{font-style:normal;font-size:13px;font-weight:600;color:var(--wine)}
+.route em::after{content:" \2192"}
+#goExample{border-top-color:var(--ochre)}
+.lessons{border-left:2px solid var(--pink);padding:4px 0 4px 16px;display:grid;gap:10px}
+.lessons ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.lessons li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:baseline;font-size:14px}
+.lessons code{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.lessons a,.trust a,.diy a{color:var(--wine)}
+.diy{font-size:14.5px;background:var(--surface);border:1px solid var(--hair);padding:12px 16px}
+.diy b{color:var(--wine)}
+.addrline{font-family:var(--mono);font-size:13px;user-select:all}
+@media (max-width:820px){.gets,.routes{grid-template-columns:minmax(0,1fr)}.lessons li{grid-template-columns:minmax(0,1fr)}.lessons code{white-space:normal}}
+.samplebar[hidden],[hidden]{display:none!important}
+.inputs input[readonly],.inputs select:disabled{opacity:.7;cursor:not-allowed}
+.cta a{color:var(--bg)}
+.inputs input[aria-invalid="true"]{border-color:var(--loss);background:color-mix(in srgb,var(--loss) 10%,var(--field))}
+.attention{border-left:3px solid var(--loss);background:color-mix(in srgb,var(--loss) 8%,transparent);padding:10px 14px;font-size:13.5px;display:grid;gap:4px}
+.basis{font-size:13px;color:var(--muted);max-width:80ch}
+.basis b{color:var(--ink);font-weight:600}
+.check{display:inline-flex;gap:8px;align-items:center;font-size:13.5px}
+.whatif{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.wi-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 14px;align-content:start}
+.wi-out table td,.wi-out table th{padding:7px 10px}
+.hint{font-size:12px;color:var(--muted)}
+@media (max-width:820px){.whatif{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:820px){
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .exhibit{grid-template-columns:minmax(0,1fr)}
+  .exhibit .side{border-right:none;padding-right:0;border-bottom:1px solid var(--hair);padding-bottom:16px}
+  .quote{font-size:19px}
+  .legend{grid-auto-flow:column;justify-content:start;gap:16px}
+  .keyrow{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:440px){.tile .v{font-size:24px}.exhibit{padding:12px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head><body style="margin:0">
+<nav style="background:#2A0D17;font:500 13px 'IBM Plex Sans',system-ui,sans-serif;padding:10px max(16px,env(safe-area-inset-left,0px))"><div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;align-items:center"><a href="/" style="color:#FBF4F6;text-decoration:none;letter-spacing:.14em">← NEXT10 LABS</a><span style="display:flex;gap:18px;flex-wrap:wrap"><a href="/#get" style="color:#E28BA8;text-decoration:none">Get the free report</a><a href="/#ai" style="color:#E28BA8;text-decoration:none">Use it with AI</a><a href="/#contact" style="color:#E28BA8;text-decoration:none">Bring us a decision</a></span></div></nav>
+<div class="top"></div>
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">The Profitability Check</div>
+    <div class="eyebrow">Next10 Labs / Following the Value</div>
+  </header>
+
+  <div class="intro">
+    <p class="eyebrow" style="margin-top:28px">Free tool from Following the Value</p>
+    <h1 style="margin-top:6px">Which of your TikTok Shop offers actually make money?</h1>
+    <p class="lede">Your biggest seller may not be your most profitable offer. Use your own figures to see what each product and bundle earns after selling costs and ads, the ROAS it needs to break even, and which offers deserve more investment before your next peak. We call this the <b>MVM view: margin, velocity and materiality</b>, or what each offer earns, how quickly it sells, and how much it matters.</p>
+
+    <div class="gets">
+      <div><b>What each offer earns</b><span>Per order, after product cost, platform and creator commission, fulfilment, returns, promotions and ads.</span></div>
+      <div><b>Its break-even ROAS</b><span>On the same basis as the ROAS TikTok reports, as a starting point for your GMV Max target.</span></div>
+      <div><b>A view of your whole range</b><span>Which offers to back, reprice or rebundle, test, or stop, plotted as in Exhibit 6.2 of the report.</span></div>
+    </div>
+
+    <h3 style="margin-top:8px">Choose how to start</h3>
+    <div class="routes">
+      <button class="route" id="goOne"><b>Check one offer</b><span>About 2 minutes. You need one product's price, costs and ad spend per order.</span><em>Start</em></button>
+      <button class="route" id="goNumbers"><b>Check your whole range</b><span>About 15 minutes. You need the last 30 days by product from Seller Center and your GMV Max report.</span><em>Start</em></button>
+      <button class="route" id="goExample"><b>See an example first</b><span>A sample shop with invented figures, so you can see what you'll get before you use your own.</span><em>Look</em></button>
+    </div>
+    <p class="diy"><b>Short of time or data?</b> We can read your Shop with you. The first conversation is on us. <a href="mailto:hello@next10labs.ai?subject=Please%20read%20our%20TikTok%20Shop">Contact us</a> at <span class="addrline">hello@next10labs.ai</span>.</p>
+
+    <div class="lessons">
+      <p class="eyebrow">Built on three lessons from the report</p>
+      <ul>
+        <li><span>Know the break-even ROAS of every product or offer, and set your GMV Max target from it if profit matters.</span><code>Pull-out p.53 · Exhibit 2.3, p.23</code></li>
+        <li><span>Choose what you push, and how you bundle it. The same bestseller lost money as a single and made money as a two-pack.</span><code>Exhibit 3.1, p.30 · Playbook 7</code></li>
+        <li><span>Review every product and offer by margin, velocity and materiality. Back true heroes, rework workhorses, test potential gold, stop or prove the rest.</span><code>Exhibit 6.2, p.50</code></li>
+      </ul>
+      <p class="hint">Don't have the report? <a href="/#get">Get Following the Value free at next10labs.ai</a>.</p>
+    </div>
+
+    <div class="trust">
+      <span>Your figures stay in this browser. Nothing is sent to us, and nothing is saved unless you choose.</span>
+      <span>Every cost is an assumption you can change.</span>
+      <span>An estimate of Shop contribution, not a measure of halo or incrementality. <a href="#method" id="goMethod">How it works</a></span>
+    </div>
+  </div>
+
+  <section id="read" aria-labelledby="readTitle">
+    <div class="sechead">
+      <h3>Your read</h3>
+      <h2 id="readTitle">Which offers earn the right to scale</h2>
+      <p>A Shop contribution estimate, before fixed overheads and wider business effects.</p>
+    </div>
+    <p class="banner" id="exampleBanner">You are looking at an example shop with invented numbers. Replace them with your own under <b>Your numbers</b>, and this read updates as you type.</p>
+    <div class="attention" id="attention" hidden></div>
+
+    <div class="tiles" id="tiles"></div>
+    <p class="basis" id="costsInUse"></p>
+    <ul class="findings" id="findings"></ul>
+    <p class="diy" id="helpLine" hidden></p>
+
+    <figure class="exhibit" style="margin:0">
+      <div class="side">
+        <div class="eyebrow">Your shop / last 30 days</div>
+        <p class="quote">The question is not only which offer sells. It is which offer earns the right to scale.</p>
+        <div class="legend">
+          <span><i class="dot d-bundle"></i>Bundles / sets</span>
+          <span><i class="dot d-multi"></i>Multipacks</span>
+          <span><i class="dot d-single"></i>Singles</span>
+        </div>
+      </div>
+      <div class="chartbox" id="chartbox">
+        <svg id="chart" viewBox="0 0 860 520" role="img" aria-label="Bubble chart of margin after marketing against orders"></svg>
+        <div class="tip" id="tip" hidden></div>
+        <figcaption class="chartnote" id="chartnote"></figcaption>
+      </div>
+    </figure>
+
+    <div class="keyrow">
+      <div class="key k-hero"><b>True hero</b>Sells fast and earns well. A candidate to back.</div>
+      <div class="key k-work"><b>Workhorse</b>Sells fast, earns little or loses. A candidate to reprice or rebundle.</div>
+      <div class="key k-gold"><b>Potential gold</b>Earns well, sells slowly. A candidate to test.</div>
+      <div class="key k-stop"><b>Stop or prove</b>Slow and thin. Stop it, or prove why to keep it.</div>
+    </div>
+
+    <div class="scroll">
+      <table id="results">
+        <thead><tr>
+          <th>Product or offer</th><th>Orders</th><th>Avg price</th>
+          <th>Before ads<span class="sub">per order</span></th>
+          <th>After marketing<span class="sub">per order</span></th>
+          <th>Margin</th><th>Total earned</th>
+          <th>Est. break-even<span class="sub">ROAS</span></th>
+          <th>TikTok<span class="sub">reported ROAS</span></th>
+          <th id="targetHead">Profit target<span class="sub">ROAS</span></th>
+          <th class="l">Read</th>
+        </tr></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+    <p class="basis"><b>Estimated break-even on your reported ROAS basis.</b> Where you enter TikTok's reported ROAS, the break-even is put on that same basis, so you can compare the two directly. Use it as a starting point for your GMV Max target, then monitor actual contribution. It is a historical estimate, not a guarantee of future profit, and it does not show whether sales would have happened anyway. It assumes your sales and ad figures cover the same dates and products. † No ad spend: break-even shown on sales value. ‡ Ad spend but no reported ROAS entered: break-even shown on sales value.</p>
+  </section>
+
+  <section id="whatif" aria-labelledby="wiTitle">
+    <div class="sechead">
+      <h3>One offer</h3>
+      <h2 id="wiTitle">Check one offer, or test a change before you scale it</h2>
+      <p>No spreadsheet needed. Choose <b>A new offer</b> and enter one product's figures per order to see what it earns and the ROAS it needs to break even. Or start from an offer in your range and change its price, product cost, fulfilment, creator share or ad spend. To test a new bundle, enter the bundle's price and its combined product cost.</p>
+    </div>
+    <div class="group whatif">
+      <div class="wi-fields">
+        <div class="field" style="grid-column:1/-1"><label for="wi_base">Start from</label><div class="unit"><select id="wi_base"></select></div></div>
+        <div class="field"><label for="wi_price">Price per order</label><div class="unit"><em class="cursym">£</em><input id="wi_price" type="text" inputmode="decimal"></div></div>
+        <div class="field"><label for="wi_cost">Product cost per order</label><div class="unit"><em class="cursym">£</em><input id="wi_cost" type="text" inputmode="decimal"></div></div>
+        <div class="field"><label for="wi_fulfil">Fulfilment per order</label><div class="unit"><em class="cursym">£</em><input id="wi_fulfil" type="text" inputmode="decimal"></div></div>
+        <div class="field"><label for="wi_aff">Affiliate share</label><div class="unit"><input id="wi_aff" type="text" inputmode="decimal"><em>%</em></div></div>
+        <div class="field"><label for="wi_ad">Ad spend per order</label><div class="unit"><em class="cursym">£</em><input id="wi_ad" type="text" inputmode="decimal"></div></div>
+        <div class="field"><label for="wi_roas">TikTok reported ROAS</label><div class="unit"><input id="wi_roas" type="text" inputmode="decimal"><em>x</em></div><small>Optional. Puts break-even on TikTok's basis.</small></div>
+        <div class="field" style="grid-column:1/-1"><button class="ghost small" id="wi_reset">Reset</button></div>
+      </div>
+      <div class="wi-out">
+        <div class="scroll"><table id="wi_table"><thead><tr><th></th><th>Current</th><th>Test</th></tr></thead><tbody></tbody></table></div>
+        <p class="hint" style="margin-top:8px">Uses your cost settings for commission, VAT, returns, promotions, sampling and other costs. It estimates what each order would earn. It cannot tell you how many people will buy it; that is what a bounded test is for.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="numbers" aria-labelledby="numTitle">
+    <div class="sechead">
+      <h3>Your numbers</h3>
+      <h2 id="numTitle">One row per product or offer</h2>
+      <p>Use the same 30 days for every figure, from Seller Center and your GMV Max or product ads report. Give each bundle and multipack its own row, because each offer has its own economics.</p>
+    </div>
+    <div class="samplebar" id="sampleBar"><span><b>This is the example shop.</b> Its figures are invented and locked, so they can never mix with yours.</span><button class="small" id="startOwn">Start with my own numbers</button></div>
+    <div class="group" style="font-size:13.5px;gap:8px">
+      <p><b>Sales:</b> what customers paid for this offer, after discounts and before refunds. If your figure is already net of refunds, set returns to 0 below. Say under Your costs whether it includes VAT.</p>
+      <p><b>Orders:</b> the number of times this offer was bought. A 2-pack bought once is one order. If customers often buy several products in one parcel, lower the fulfilment cost for those rows, or the check will over-count delivery.</p>
+      <p><b>Affiliate share:</b> the part of this offer's sales that came through creators, entered as 82 for 82%. Enter 0 if none.</p>
+      <p><b>Product cost and fulfilment:</b> optional, per order. Leave blank to use the defaults under Your costs. A fixed product cost is better than a percentage when you are testing discounts.</p>
+    </div>
+
+    <div class="scroll inputs">
+      <table id="inputs">
+        <thead><tr>
+          <th>Product or offer</th><th class="l">Type</th><th>Sales</th><th>Orders</th><th>Ad spend</th><th>TikTok ROAS</th><th>Affiliate share %</th><th>Product cost<span class="sub">per order, optional</span></th><th>Fulfilment<span class="sub">per order, optional</span></th><th></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <button class="ghost small" id="addRow">Add a row</button>
+      <button class="ghost small" id="togglePaste">Paste from a spreadsheet</button>
+      <button class="ghost small" id="loadExample">Reload the example</button>
+    </div>
+    <div class="group" id="pasteBox" hidden>
+      <p>Copy rows from Excel or Google Sheets and paste them here. Columns in this order, header row optional. Use full stops for decimals.</p>
+      <p><code>Product, Type, Sales, Orders, Ad spend, TikTok ROAS, Affiliate share %, Product cost per order, Fulfilment per order</code></p>
+      <textarea id="pasteArea" aria-label="Paste rows" placeholder="Barrier Serum 30ml	Single	268000	21000	56000	3.9	82		"></textarea>
+      <div class="actions">
+        <button class="small" id="pasteReplace">Replace my rows</button>
+        <button class="ghost small" id="pasteAppend">Add to my rows</button>
+      </div>
+      <p class="status" id="pasteStatus" role="status"></p>
+    </div>
+
+    <div class="sechead">
+      <h3>Your costs</h3>
+      <h2>The cost of each order, before ads</h2>
+      <p>These start at the assumptions used in Following the Value. Replace them with your own. Percentages are of the price the customer paid.</p>
+    </div>
+    <div class="group">
+      <div class="costs">
+        <div class="field"><label for="cur">Currency</label><div class="unit"><select id="cur"><option value="£">£ GBP</option><option value="$">$ USD</option><option value="€">€ EUR</option></select></div></div>
+        <div class="field"><label for="vat">Do your sales figures include VAT?</label><div class="unit"><select id="vat"><option value="inc">Yes, include UK VAT at 20%</option><option value="ex">No, VAT removed or not VAT-registered</option></select></div><small>If yes, the VAT share of the price (one-sixth) is taken off before other costs.</small></div>
+        <div class="field"><label for="a_cogs">Product cost (default)</label><div class="unit"><input id="a_cogs" type="number" step="0.5" min="0"><em>%</em></div><small>Product, packaging, landed cost. Used where no per-order cost is entered.</small></div>
+        <div class="field"><label for="a_platform">TikTok Shop commission</label><div class="unit"><input id="a_platform" type="number" step="0.5" min="0"><em>%</em></div><small>Platform referral fee</small></div>
+        <div class="field"><label for="a_creator">Creator commission</label><div class="unit"><input id="a_creator" type="number" step="0.5" min="0"><em>%</em></div><small>Applied to each row's affiliate share</small></div>
+        <div class="field"><label for="a_fulfil">Fulfilment per order (default)</label><div class="unit"><em class="cursym">£</em><input id="a_fulfil" type="number" step="0.05" min="0"></div><small>Pick, pack and delivery</small></div>
+        <div class="field"><label for="a_returns">Returns and refunds</label><div class="unit"><input id="a_returns" type="number" step="0.5" min="0"><em>%</em></div><small>Set to 0 if your sales figure is already net of refunds</small></div>
+        <div class="field"><label for="a_promo">Promotions you fund</label><div class="unit"><input id="a_promo" type="number" step="0.5" min="0"><em>%</em></div><small>Smart Promotions and vouchers not already taken off your sales figure</small></div>
+        <div class="field"><label for="a_sampling">Sampling and content</label><div class="unit"><input id="a_sampling" type="number" step="0.5" min="0"><em>%</em></div><small>Seeding, free product, content fees</small></div>
+        <div class="field"><label for="a_other">Other selling costs</label><div class="unit"><input id="a_other" type="number" step="0.5" min="0"><em>%</em></div><small>Agency fees, LIVE costs, payment fees</small></div>
+      </div>
+      <div class="costs">
+        <div class="field"><label for="a_vel">Fast seller from</label><div class="unit"><input id="a_vel" type="number" step="50" min="1"><em>orders</em></div><small>Dividing line on the chart. Tune to your scale.</small></div>
+        <div class="field"><label for="a_margin">Strong margin from</label><div class="unit"><input id="a_margin" type="number" step="1"><em>%</em></div><small>Margin after marketing</small></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>What matters this peak?</h3>
+      <p style="color:var(--muted);max-width:70ch">Early momentum can be the right call. If you choose it, set the loss per order you are prepared to fund, and the check shows the ROAS target that keeps you inside it.</p>
+      <div class="goal">
+        <label><input type="radio" name="goal" id="g_profit" value="profit"> Profit: break even or better</label>
+        <label><input type="radio" name="goal" id="g_growth" value="growth"> Momentum: accept a loss of</label>
+        <div class="unit"><em class="cursym">£</em><input id="a_loss" type="number" step="0.1" min="0" aria-label="Loss per order you will accept"><em>/order</em></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Your privacy</h3>
+      <p style="max-width:70ch">The check runs entirely in your browser. Your figures are never sent to Next10 Labs. They are not saved unless you tick the box below, in which case they are kept on this device only.</p>
+      <div class="actions" style="align-items:center">
+        <label class="check"><input type="checkbox" id="remember"> Remember my figures on this device</label>
+        <button class="ghost small" id="clearSaved">Clear saved figures</button>
+        <span class="status" id="privStatus" role="status"></span>
+      </div>
+    </div>
+    <div class="actions"><button class="ghost" id="backToRead">See your read</button></div>
+  </section>
+
+  <section aria-labelledby="aiTitle">
+    <div class="sechead">
+      <h3>Take it further</h3>
+      <h2 id="aiTitle">Use your read with the report</h2>
+      <p>Open your own AI assistant, attach the Following the Value PDF, then paste your results. They come with your assumptions, the limits of the check and a prompt that asks for a one-page decision brief. Pasting shares these figures with whichever AI service you use.</p>
+    </div>
+    <div class="actions"><button id="copyAI">Copy my results</button></div>
+    <p class="status" id="copyStatus" role="status"></p>
+    <textarea id="copyFallback" hidden readonly aria-label="Your results as text"></textarea>
+  </section>
+
+  <section id="method">
+    <details id="methodBox">
+      <summary>How the check works, and what it cannot tell you</summary>
+      <div class="body">
+        <p><b>Contribution before ads, per order.</b> The price paid, less VAT if your sales include it, product cost, TikTok commission, creator commission on the affiliate share, fulfilment, returns, promotions, sampling and other selling costs.</p>
+        <div class="formula">before ads = price − VAT (if included) − product cost − price × (commission + returns + promotions + sampling + other) − price × creator % × affiliate share − fulfilment</div>
+        <p><b>Contribution after marketing.</b> Before ads, less ad spend per order. Margin is that figure as a share of price. This is the vertical axis on the chart.</p>
+        <p><b>Estimated break-even ROAS.</b> The ROAS at which ad spend uses up everything left before ads. TikTok's reported GMV Max ROI counts gross revenue including some organic and affiliate orders, so a textbook calculation on your sales figure gives a different answer. Where you enter the reported ROAS, we put the break-even on that basis by scaling it by how far your actual spend sits from the spend you can afford:</p>
+        <div class="formula">break-even ROAS = TikTok ROAS × ad spend ÷ (before ads × orders)</div>
+        <p>For a momentum target, the affordable spend rises by the loss you accept on every order. If an offer loses money before any ads, or has nothing left for ads, no ROAS makes it pay back, and the check says so.</p>
+        <p><b>The read.</b> Velocity is orders in the period, margin is contribution after marketing, and materiality is bubble size (sales value). The dividing lines are the two thresholds you set. The four reads are candidates for a decision, not decisions.</p>
+        <p><b>What it cannot tell you.</b> It reads Shop orders only, from past figures. It does not show whether a sale would have happened anyway, what a new customer is worth over time, what moved to your website, Amazon or a retailer, stock position, or your fixed overheads. Those are the questions in Chapters 4 and 5 of the report, and the ones we work on with brands.</p>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <div class="cta">
+      <h2>Bring us the decision you're facing.</h2>
+      <p>What good looks like for your business sits inside your business. If the check raises a question you need answered before peak, talk to us.</p>
+      <p class="addr" id="addr">hello@next10labs.ai</p>
+      <div class="actions"><a class="btn" style="background:var(--bg);color:var(--wine);border-color:var(--bg);text-decoration:none" href="mailto:hello@next10labs.ai?subject=Profitability%20Check%3A%20a%20decision%20I%27m%20facing">Email us about your decision</a><button class="small" id="copyAddr">Copy email address</button><span class="status" id="addrStatus" style="color:inherit" role="status"></span></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Next10 Labs. Independent. Shop contribution estimate before fixed overheads. Results depend on the figures and costs you enter.</span>
+    <span><a href="/#get" style="color:inherit">Get the report at next10labs.ai</a></span>
+  </footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var KEY="n10-profit-check-v2", PREF="n10-profit-check-remember";
+var EPS=0.005;
+var DEFAULT_A={cogs:20,platform:9,creator:12,fulfil:2.75,returns:5,promo:4,sampling:5,other:0,vel:500,margin:15};
+var VATRATE=0.2;
+var EXAMPLE=[
+  {name:"Barrier Serum 30ml",type:"single",gmv:"268000",orders:"21000",ad:"56000",roas:"3.9",aff:"82",cost:"",fulfil:""},
+  {name:"Barrier Serum 2-pack",type:"multi",gmv:"98000",orders:"4700",ad:"22000",roas:"3.6",aff:"55",cost:"",fulfil:""},
+  {name:"Barrier Serum 3-pack",type:"multi",gmv:"64000",orders:"2400",ad:"15500",roas:"3.4",aff:"50",cost:"",fulfil:""},
+  {name:"Overnight Repair Mask",type:"single",gmv:"52000",orders:"3900",ad:"19000",roas:"2.8",aff:"78",cost:"",fulfil:""},
+  {name:"Daily SPF Fluid",type:"single",gmv:"31000",orders:"1700",ad:"13000",roas:"2.4",aff:"75",cost:"",fulfil:""},
+  {name:"Hydrating Face Mist",type:"single",gmv:"18000",orders:"1400",ad:"",roas:"",aff:"70",cost:"",fulfil:""},
+  {name:"Cleanser + Serum Duo",type:"bundle",gmv:"14500",orders:"560",ad:"1900",roas:"4.6",aff:"30",cost:"",fulfil:""},
+  {name:"Tinted Lip Oil",type:"single",gmv:"9800",orders:"820",ad:"",roas:"",aff:"40",cost:"",fulfil:""},
+  {name:"Full Routine Set",type:"bundle",gmv:"7200",orders:"160",ad:"",roas:"",aff:"10",cost:"",fulfil:""},
+  {name:"Firming Eye Cream",type:"single",gmv:"4100",orders:"190",ad:"2300",roas:"1.6",aff:"60",cost:"",fulfil:""}
+];
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function fresh(){return{cur:"£",vat:"ex",a:clone(DEFAULT_A),goal:"profit",loss:"0.5",rows:clone(EXAMPLE),example:true}}
+var state=fresh();
+var remember=false;
+try{remember=localStorage.getItem(PREF)==="1"}catch(e){}
+if(remember){try{var saved=JSON.parse(localStorage.getItem(KEY)||"null");if(saved&&saved.rows&&!saved.example){state=Object.assign(state,saved);state.a=Object.assign(clone(DEFAULT_A),saved.a||{})}}catch(e){}}
+function save(){if(!remember||state.example)return;try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+
+/* strict number: digits, optional thousands commas, optional decimal point; currency sign or % allowed at the ends */
+function parseNum(v){
+  var s=String(v===undefined||v===null?"":v).trim();
+  if(s==="")return{blank:true};
+  s=s.replace(/^[£$€]\s*/,"").replace(/\s*%$/,"").replace(/\s/g,"");
+  if(!/^-?(\d{1,3}(,\d{3})+|\d+)(\.\d+)?$/.test(s)&&!/^-?\.\d+$/.test(s))return{bad:true};
+  var n=parseFloat(s.replace(/,/g,""));
+  return isFinite(n)?{v:n}:{bad:true};
+}
+function num(v){var p=parseNum(v);return p.v===undefined?NaN:p.v}
+
+/* ---------- the model ---------- */
+function costs(price,aff,costPer,fulfil){
+  var A=state.a;
+  var vat=state.vat==="inc"?price*VATRATE/(1+VATRATE):0;
+  var pc=costPer!==null?costPer:price*A.cogs/100;
+  var pct=price*(A.platform+A.returns+A.promo+A.sampling+A.other)/100;
+  var cr=price*(A.creator/100)*aff;
+  var f=fulfil!==null?fulfil:A.fulfil;
+  return{vat:vat,product:pc,pct:pct,creator:cr,fulfil:f,before:price-vat-pc-pct-cr-f};
+}
+function validate(r){
+  var errs={},msgs=[],v={};
+  function need(f,label,opts){
+    var p=parseNum(r[f]);
+    if(p.blank){if(opts.required){errs[f]=1;msgs.push(label+" is missing"+(opts.zeroHint?" (enter 0 if none)":""))}v[f]=opts.dflt;return}
+    if(p.bad){errs[f]=1;msgs.push(label+" is not a number: "+String(r[f]));v[f]=NaN;return}
+    if(p.v<0){errs[f]=1;msgs.push(label+" cannot be negative");v[f]=NaN;return}
+    if(opts.max!==undefined&&p.v>opts.max){errs[f]=1;msgs.push(label+" should be between 0 and "+opts.max);v[f]=NaN;return}
+    v[f]=p.v;
+  }
+  need("gmv","Sales",{required:true,dflt:NaN});
+  need("orders","Orders",{required:true,dflt:NaN});
+  need("ad","Ad spend",{required:false,dflt:0});
+  need("roas","TikTok ROAS",{required:false,dflt:null});
+  need("aff","Affiliate share",{required:true,zeroHint:true,dflt:NaN,max:100});
+  need("cost","Product cost",{required:false,dflt:null});
+  need("fulfil","Fulfilment",{required:false,dflt:null});
+  return{errs:errs,msgs:msgs,v:v};
+}
+function isEmpty(r){return["name","gmv","orders","ad","roas","aff","cost","fulfil"].every(function(f){return String(r[f]||"").trim()===""})}
+function compute(){
+  var out=[],bad=[],noOrders=[],A=state.a;
+  state.rows.forEach(function(r,i){
+    if(isEmpty(r))return;
+    var val=validate(r),v=val.v,name=r.name||("Row "+(i+1));
+    if(val.msgs.length){bad.push({i:i,name:name,msgs:val.msgs,errs:val.errs});return}
+    if(!(v.orders>0)||!(v.gmv>0)){
+      if(v.ad>0)noOrders.push({i:i,name:name,ad:v.ad});
+      else{var e={},m=[];if(!(v.gmv>0)){e.gmv=1;m.push("Sales is zero")}if(!(v.orders>0)){e.orders=1;m.push("Orders is zero")}bad.push({i:i,name:name,msgs:m,errs:e})}
+      return;
+    }
+    var ad=v.ad, hasRoas=v.roas!==null&&v.roas>0&&ad>0;
+    var p=v.gmv/v.orders, c=costs(p,v.aff/100,v.cost,v.fulfil);
+    var adPer=ad/v.orders, after=c.before-adPer;
+    var accept=state.goal==="growth"?Math.max(num(state.loss)||0,0):0;
+    var basis=ad===0?"noads":hasRoas?"tt":"noroas";
+    var k=hasRoas?(v.roas*ad/v.gmv):1;         /* share of sales value TikTok counts in its ROAS */
+    function roasAt(perOrder){ if(perOrder<=EPS)return null; return k*p/perOrder; }
+    var beState=c.before<-EPS?"loss":c.before<=EPS?"zero":"ok";
+    out.push({i:i,name:name,type:r.type||"single",gmv:v.gmv,orders:v.orders,ad:ad,roas:hasRoas?v.roas:null,aff:v.aff,
+      price:p,c:c,before:c.before,adPer:adPer,after:after,margin:after/p,total:after*v.orders,
+      be:roasAt(c.before),target:roasAt(c.before+accept),beState:beState,basis:basis,k:k,
+      costOverride:v.cost,fulfilOverride:v.fulfil});
+  });
+  out.forEach(function(o){
+    var fast=o.orders>=A.vel, strong=o.margin>=A.margin/100;
+    o.q=fast&&strong?"hero":fast?"work":strong?"gold":"stop";
+  });
+  return{ok:out,bad:bad,noOrders:noOrders};
+}
+
+/* ---------- formatting ---------- */
+function money(v,dp){var s=state.cur;var neg=v<0;v=Math.abs(v);var t;
+  if(dp===undefined){t=v>=1e6?(v/1e6).toFixed(2)+"m":v>=1e4?Math.round(v/1e3)+"k":v>=1e3?(v/1e3).toFixed(1)+"k":v.toFixed(0)}
+  else t=v.toLocaleString("en-GB",{minimumFractionDigits:dp,maximumFractionDigits:dp});
+  return (neg&&t.replace(/[0.,]/g,"")!==""?"−":"")+s+t}
+function pct(v,dp){var t=Math.abs(v*100).toFixed(dp===undefined?0:dp);return (v<0&&+t!==0?"−":"")+t+"%"}
+function x(v){return v===null?"":v.toFixed(1)+"x"}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var QNAME={hero:"True hero",work:"Workhorse",gold:"Potential gold",stop:"Stop or prove"};
+var QACT={hero:"Candidate to back",work:"Candidate to reprice or rebundle",gold:"Candidate to test",stop:"Stop, or prove why to keep it"};
+var TYPES={single:"Single",multi:"Multipack",bundle:"Bundle / set"};
+function mark(o){return o.basis==="noads"?" †":o.basis==="noroas"?" ‡":""}
+function beText(o,val){
+  if(o.beState==="loss")return'<span class="neg">Loses money before ads</span>';
+  if(o.beState==="zero")return'<span class="neg">Nothing left for ads</span>';
+  return val===null?'<span class="neg">None</span>':x(val)+mark(o);
+}
+
+/* ---------- results ---------- */
+var lastR={ok:[],bad:[],noOrders:[]};
+function renderResults(){
+  var res=compute(),R=res.ok;lastR=res;
+  document.getElementById("exampleBanner").hidden=!state.example;
+  markInputs(res);
+  var att=document.getElementById("attention"),parts=[];
+  if(res.bad.length)parts.push("<b>"+res.bad.length+" row"+(res.bad.length>1?"s are":" is")+" left out until fixed.</b> "+res.bad.map(function(b){return esc(b.name)+": "+b.msgs.join("; ")}).join(". ")+". Check the fields marked in red under Your numbers.");
+  var unalloc=res.noOrders.reduce(function(s,n){return s+n.ad},0);
+  if(res.noOrders.length)parts.push("<b>"+money(unalloc)+" of ad spend had no orders</b> ("+res.noOrders.map(function(n){return esc(n.name)}).join(", ")+"). It is included in the totals as a cost.");
+  att.innerHTML=parts.map(function(p){return"<p>"+p+"</p>"}).join("");att.hidden=!parts.length;
+
+  var tiles=document.getElementById("tiles"),fl=document.getElementById("findings");
+  renderCostsInUse(R);
+  var tb=document.querySelector("#results tbody"),tf=document.querySelector("#results tfoot");
+  if(!R.length){
+    tiles.innerHTML='<div class="tile" style="grid-column:1/-1"><span class="k">No rows to read yet</span><span class="s">Add a product with sales, orders and affiliate share under Your numbers.</span></div>';
+    fl.innerHTML="";document.getElementById("helpLine").hidden=true;tb.innerHTML="";tf.innerHTML="";drawChart([]);renderWhatIf();return;
+  }
+  var G=0,O=0,T=-unalloc,AD=unalloc,adLoss=unalloc,gLoss=0,nLoss=0;
+  R.forEach(function(o){G+=o.gmv;O+=o.orders;T+=o.total;AD+=o.ad;if(o.after<0){nLoss++;gLoss+=o.gmv;adLoss+=o.ad}});
+  var big=R.slice().sort(function(a,b){return b.gmv-a.gmv})[0];
+  var best=R.slice().sort(function(a,b){return b.total-a.total})[0];
+  tiles.innerHTML=
+    tile("Earned after marketing",money(T),pct(T/G,1)+" of "+money(G)+" sales",T<0)+
+    tile("Ad spend behind loss-making offers",AD>0?pct(adLoss/AD):"–",AD>0?money(adLoss)+" of "+money(AD):"No ad spend entered",adLoss>0)+
+    tile("Offers losing money per order",nLoss+" of "+R.length,pct(gLoss/G)+" of sales",nLoss>0)+
+    tile("Biggest seller earns",money(big.after,2),"per order, "+esc(big.name),big.after<0);
+  var f=[];
+  if(big.after<0){
+    f.push("<b>"+esc(big.name)+"</b> is your biggest seller and loses "+money(-big.after,2)+" on every order."+
+      (big.beState!=="ok"?" It loses money before any ads, so no ROAS fixes it. Look at price and offer first.":big.basis==="tt"?" On your reported basis, it needs about "+x(big.be)+" to break even and earned "+x(big.roas)+".":""));
+  }else{
+    f.push("<b>"+esc(big.name)+"</b> is your biggest seller and earns "+money(big.after,2)+" per order after marketing."+(big.basis==="tt"?" Estimated break-even ROAS is "+x(big.be)+"; it earned "+x(big.roas)+".":""));
+  }
+  if(best!==big&&best.total>0)f.push("<b>"+esc(best.name)+"</b> earns the most in total: "+money(best.total)+" from "+best.orders.toLocaleString("en-GB")+" orders.");
+  var packs=R.filter(function(o){return o.type!=="single"&&o.after>0}).sort(function(a,b){return b.after-a.after});
+  var lossSingles=R.filter(function(o){return o.type==="single"&&o.after<0});
+  if(packs.length&&lossSingles.length)f.push("Some singles lose money while bundles or multipacks earn. <b>"+esc(packs[0].name)+"</b> makes "+money(packs[0].after,2)+" per order. Before Black Friday, decide which offers you push, not just which products. Use Test a change to try new packs.");
+  var gold=R.filter(function(o){return o.q==="gold"}).sort(function(a,b){return b.margin-a.margin});
+  if(gold.length)f.push((gold.length===1?"One":gold.length)+" offer"+(gold.length>1?"s earn":" earns")+" a strong margin but sell"+(gold.length>1?"":"s")+" slowly, led by <b>"+esc(gold[0].name)+"</b> at "+pct(gold[0].margin)+". These are candidates to test with more support.");
+  var noFix=R.filter(function(o){return o.beState!=="ok"});
+  if(noFix.length)f.push(noFix.length+" offer"+(noFix.length>1?"s have":" has")+" nothing left for ads after selling costs. No ROAS target fixes "+(noFix.length>1?"them":"it")+"; price, pack size or cost has to change.");
+  fl.innerHTML=f.map(function(s){return"<li>"+s+"</li>"}).join("");
+  var hl=document.getElementById("helpLine");
+  if(!state.example&&nLoss>0){hl.innerHTML=nLoss+" of your "+R.length+" offer"+(R.length>1?"s":"")+(nLoss>1?" lose":" loses")+" money on every order. <b>Want help deciding what to back, change or stop?</b> <a href=\"mailto:hello@next10labs.ai?subject=Profitability%20Check%3A%20help%20deciding%20what%20to%20change\">Talk to us</a> at <span class=\"addrline\">hello@next10labs.ai</span>. The first conversation is on us.";hl.hidden=false}else hl.hidden=true;
+
+  document.getElementById("targetHead").innerHTML=(state.goal==="growth"?"Momentum target":"Profit target")+'<span class="sub">ROAS</span>';
+  tb.innerHTML=R.slice().sort(function(a,b){return b.gmv-a.gmv}).map(function(o){
+    var gap=(o.roas&&o.be)?(o.roas>=o.be?' class="pos"':' class="neg"'):"";
+    var tg=o.beState==="loss"&&state.goal!=="growth"?"–":(o.target===null?'<span class="neg">None</span>':x(o.target)+mark(o));
+    return "<tr><td>"+esc(o.name)+'<span class="sub">'+(TYPES[o.type]||"Single")+"</span></td>"+
+      "<td>"+o.orders.toLocaleString("en-GB")+"</td><td>"+money(o.price,2)+"</td>"+
+      '<td class="'+(o.before<0?"neg":"")+'">'+money(o.before,2)+"</td>"+
+      '<td class="'+(o.after<0?"neg":"pos")+'">'+money(o.after,2)+"</td>"+
+      '<td class="'+(o.margin<0?"neg":"")+'">'+pct(o.margin)+"</td>"+
+      '<td class="'+(o.total<0?"neg":"")+'">'+money(o.total)+"</td>"+
+      "<td>"+beText(o,o.be)+"</td><td"+gap+">"+(o.roas?x(o.roas):o.ad>0?"Not entered":"No ads")+"</td><td>"+tg+"</td>"+
+      '<td class="l"><span class="chip c-'+o.q+'">'+QNAME[o.q]+"</span>"+(o.after<0?'<span class="chip c-loss">Loses money</span>':"")+'<span class="sub">'+QACT[o.q]+"</span></td></tr>";
+  }).join("");
+  tf.innerHTML="<tr><td>All offers"+(unalloc?'<span class="sub">incl. '+money(unalloc)+" spend with no orders</span>":"")+"</td><td>"+O.toLocaleString("en-GB")+"</td><td>"+money(G/O,2)+"</td><td></td><td>"+money(T/O,2)+"</td><td>"+pct(T/G)+'</td><td class="'+(T<0?"neg":"")+'">'+money(T)+'</td><td colspan="4"></td></tr>';
+  drawChart(R);renderWhatIf();
+}
+function renderCostsInUse(R){
+  var A=state.a,D=DEFAULT_A,el2=document.getElementById("costsInUse");
+  if(!R.length){el2.innerHTML="";return}
+  var dflt=AK.filter(function(k){return k!=="vel"&&k!=="margin"&&A[k]===D[k]});
+  var nCost=R.filter(function(o){return o.costOverride===null}).length, nFul=R.filter(function(o){return o.fulfilOverride===null}).length;
+  var t="<b>Costs used.</b> Sales "+(state.vat==="inc"?"include VAT at 20%, removed before other costs":"exclude VAT")+". ";
+  t+="Product cost: "+(nCost?A.cogs+"% of price on "+nCost+" of "+R.length+" offers"+(A.cogs===D.cogs?" (report default)":""):"your own figure on every offer")+". ";
+  t+="Fulfilment: "+(nFul?money(A.fulfil,2)+" per order on "+nFul+" of "+R.length+" offers"+(A.fulfil===D.fulfil?" (report default)":""):"your own figure on every offer")+". ";
+  t+=dflt.length?dflt.length+" of 8 cost settings are still the report's defaults. Change them under Your costs.":"All cost settings are your own.";
+  el2.innerHTML=t;
+}
+function tile(k,v,s,bad){return '<div class="tile"><span class="k">'+k+'</span><span class="v'+(bad?" neg":"")+'">'+v+'</span><span class="s">'+s+"</span></div>"}
+
+/* ---------- chart (Exhibit 6.2 layout) ---------- */
+var SVGNS="http://www.w3.org/2000/svg";
+function el(n,a,t){var e=document.createElementNS(SVGNS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!==undefined)e.textContent=t;return e}
+function drawChart(R){
+  var svg=document.getElementById("chart");while(svg.firstChild)svg.removeChild(svg.firstChild);
+  var A=state.a,W=860,H=520,L=72,Rt=20,T=40,B=56,pw=W-L-Rt,ph=H-T-B;
+  var vel=Math.max(A.vel,1),thr=A.margin/100;
+  var os=R.map(function(o){return o.orders}).concat([vel]);
+  var lo=Math.max(1,Math.min.apply(null,os)/1.8),hi=Math.max.apply(null,os)*1.8;
+  var ms=R.map(function(o){return Math.max(Math.min(o.margin,1),-2)}).concat([thr,0]);
+  var mn=Math.min.apply(null,ms),mx=Math.max.apply(null,ms);
+  var span=mx-mn,step=span>1.2?0.3:span>0.5?0.15:0.05;
+  var y0=Math.min(Math.floor((mn-step*0.4)/step)*step,-step),y1=Math.max(Math.ceil((mx+step*0.4)/step)*step,thr+step);
+  function sx(v){return L+(Math.log(v)-Math.log(lo))/(Math.log(hi)-Math.log(lo))*pw}
+  function sy(v){return T+(y1-v)/(y1-y0)*ph}
+  var g=el("g",{});svg.appendChild(g);
+  for(var i=0,v=y0;v<=y1+1e-9;i++,v=y0+i*step){var yy=sy(v);
+    g.appendChild(el("line",{x1:L,x2:L+pw,y1:yy,y2:yy,stroke:"var(--hair)","stroke-width":1}));
+    g.appendChild(el("text",{x:L-10,y:yy+4,"text-anchor":"end","font-size":13,fill:"var(--muted)","font-family":"var(--body)"},pct(Math.round(v*100)/100)));}
+  [1,3,10,30,100,300,1000,3000,10000,30000,100000,300000].forEach(function(t){if(t<lo||t>hi)return;var xx=sx(t);
+    g.appendChild(el("line",{x1:xx,x2:xx,y1:T,y2:T+ph,stroke:"var(--hair)","stroke-width":1}));
+    g.appendChild(el("text",{x:xx,y:T+ph+20,"text-anchor":"middle","font-size":13,fill:"var(--muted)","font-family":"var(--body)"},t>=1000?(t/1000)+"k":t));});
+  g.appendChild(el("text",{x:L+pw/2,y:H-8,"text-anchor":"middle","font-size":13,fill:"var(--muted)","font-family":"var(--body)"},"Orders in period (log scale)"));
+  g.appendChild(el("text",{x:0,y:0,"text-anchor":"middle","font-size":13,fill:"var(--muted)","font-family":"var(--body)",transform:"translate(16 "+(T+ph/2)+") rotate(-90)"},"Margin after marketing"));
+  if(y0<0&&y1>0)g.appendChild(el("line",{x1:L,x2:L+pw,y1:sy(0),y2:sy(0),stroke:"var(--muted)","stroke-width":1,opacity:.6}));
+  g.appendChild(el("line",{x1:L,x2:L+pw,y1:sy(thr),y2:sy(thr),stroke:"var(--wine)","stroke-width":1.6}));
+  g.appendChild(el("line",{x1:sx(vel),x2:sx(vel),y1:T,y2:T+ph,stroke:"var(--wine)","stroke-width":1.6}));
+  [["POTENTIAL GOLD",L+12,T-12,"start"],["TRUE HERO",L+pw-6,T-12,"end"],["STOP OR PROVE",L+12,T+ph-10,"start"],["WORKHORSE",L+pw-6,T+ph-10,"end"]].forEach(function(q){
+    g.appendChild(el("text",{x:q[1],y:q[2],"text-anchor":q[3],"font-size":13,"font-weight":600,"letter-spacing":".06em",fill:"var(--pink)","font-family":"var(--body)"},q[0]));});
+  var maxG=Math.max.apply(null,R.map(function(o){return o.gmv}).concat([1]));
+  var tip=document.getElementById("tip");
+  R.slice().sort(function(a,b){return b.gmv-a.gmv}).forEach(function(o){
+    var r=Math.max(5,Math.sqrt(o.gmv/maxG)*44);
+    var cx=sx(o.orders),cy=sy(Math.max(Math.min(o.margin,y1),y0));
+    var col=o.type==="bundle"?"var(--ochre)":o.type==="multi"?"var(--pink)":"var(--wine)";
+    var c=el("circle",{cx:cx,cy:cy,r:r,fill:o.type==="bundle"?"var(--surface)":col,"fill-opacity":o.type==="bundle"?0.6:0.9,stroke:o.type==="bundle"?col:"var(--surface)","stroke-width":o.type==="bundle"?2.2:1,tabindex:0,"aria-label":o.name});
+    c.style.cursor="pointer";
+    function show(){var bb=svg.getBoundingClientRect(),k=bb.width/W;
+      tip.innerHTML="<b>"+esc(o.name)+"</b><br>"+o.orders.toLocaleString("en-GB")+" orders · "+money(o.gmv)+" sales<br>"+money(o.after,2)+" per order after marketing ("+pct(o.margin)+")<br>"+QNAME[o.q]+": "+QACT[o.q];
+      tip.style.left=(cx*k)+"px";tip.style.top=((cy-r)*k)+"px";tip.hidden=false;}
+    c.addEventListener("pointerenter",show);c.addEventListener("focus",show);
+    c.addEventListener("pointerleave",function(){tip.hidden=true});c.addEventListener("blur",function(){tip.hidden=true});
+    g.appendChild(c);
+  });
+  document.getElementById("chartnote").textContent="Dividing lines: "+vel.toLocaleString("en-GB")+" orders and "+A.margin+"% margin after marketing. Bubble area reflects sales value. Shop contribution before fixed overheads.";
+}
+
+/* ---------- inputs ---------- */
+var COLS=["gmv","orders","ad","roas","aff","cost","fulfil"];
+function renderInputs(){
+  var tb=document.querySelector("#inputs tbody");
+  tb.innerHTML=state.rows.map(function(r,i){
+    var ro=state.example?" readonly":"";
+    function inp(f){return '<td><input'+ro+' id="r'+i+'_'+f+'" data-i="'+i+'" data-f="'+f+'" '+(f==="name"?'type="text" class="name"':'type="text" inputmode="decimal"')+' value="'+esc(r[f]===undefined?"":r[f])+'" aria-label="'+f+' row '+(i+1)+'"></td>'}
+    return "<tr>"+inp("name")+'<td><select'+(state.example?" disabled":"")+' id="r'+i+'_type" data-i="'+i+'" data-f="type" aria-label="type row '+(i+1)+'">'+
+      [["single","Single"],["multi","Multipack"],["bundle","Bundle / set"]].map(function(t){return '<option value="'+t[0]+'"'+(r.type===t[0]?" selected":"")+">"+t[1]+"</option>"}).join("")+"</select></td>"+
+      COLS.map(inp).join("")+
+      '<td>'+(state.example?"":'<button class="del" data-del="'+i+'" aria-label="Remove row '+(i+1)+'">×</button>')+'</td></tr>';
+  }).join("");
+  document.getElementById("sampleBar").hidden=!state.example;
+  document.getElementById("addRow").hidden=state.example;
+  document.getElementById("pasteAppend").hidden=state.example;
+  document.getElementById("loadExample").hidden=state.example;
+  markInputs(lastR);
+}
+function markInputs(res){
+  document.querySelectorAll("#inputs input[aria-invalid]").forEach(function(e){e.removeAttribute("aria-invalid")});
+  res.bad.forEach(function(b){Object.keys(b.errs).forEach(function(f){var e=document.getElementById("r"+b.i+"_"+f);if(e)e.setAttribute("aria-invalid","true")})});
+}
+function onRowEdit(e){if(state.example)return;var t=e.target,i=+t.dataset.i,f=t.dataset.f;if(isNaN(i)||!f)return;state.rows[i][f]=t.value;save();renderResults()}
+document.querySelector("#inputs tbody").addEventListener("input",onRowEdit);
+document.querySelector("#inputs tbody").addEventListener("change",onRowEdit);
+document.querySelector("#inputs tbody").addEventListener("click",function(e){var d=e.target.closest("[data-del]");if(!d||state.example)return;state.rows.splice(+d.dataset.del,1);save();renderResults();renderInputs()});
+function blank(){return{name:"",type:"single",gmv:"",orders:"",ad:"",roas:"",aff:"",cost:"",fulfil:""}}
+document.getElementById("addRow").onclick=function(){state.rows.push(blank());save();renderInputs();var n=document.getElementById("r"+(state.rows.length-1)+"_name");if(n)n.focus()};
+function startOwn(){state.rows=[blank(),blank(),blank()];state.example=false;state.vat="inc";save();renderCosts();renderResults();renderInputs();
+  var n=document.getElementById("r0_name");if(n)n.focus();}
+document.getElementById("startOwn").onclick=startOwn;
+document.getElementById("loadExample").onclick=function(){var keep={cur:state.cur,a:state.a};state=fresh();state.cur=keep.cur;state.a=keep.a;renderCosts();renderResults();renderInputs()};
+document.getElementById("togglePaste").onclick=function(){var b=document.getElementById("pasteBox");b.hidden=!b.hidden;if(!b.hidden)document.getElementById("pasteArea").focus()};
+
+/* paste: real CSV/TSV parsing, then rows land in the table so any problem is visible and flagged */
+function splitLine(line,delim){
+  var out=[],cur="",q=false;
+  for(var i=0;i<line.length;i++){var ch=line[i];
+    if(q){if(ch==='"'){if(line[i+1]==='"'){cur+='"';i++}else q=false}else cur+=ch}
+    else if(ch==='"')q=true; else if(ch===delim){out.push(cur);cur=""} else cur+=ch;}
+  out.push(cur);return out.map(function(s){return s.trim()});
+}
+function typeOf(t,name){var s=String(t||"").toLowerCase();
+  if(/^(single|multi|multipack|bundle|set|bundle \/ set)$/.test(s))return s.indexOf("multi")===0?"multi":/bundle|set/.test(s)?"bundle":"single";
+  s=(s+" "+String(name||"")).toLowerCase();
+  if(/bundle|set|duo|trio|kit|combo/.test(s))return"bundle";if(/pack|multi|\bx\d|\d\s*x\b/.test(s))return"multi";return"single"}
+function parsePaste(txt){
+  var lines=txt.split(/\r?\n/).filter(function(l){return l.trim()!==""});
+  var delim=lines.some(function(l){return l.indexOf("\t")>=0})?"\t":",";
+  var rows=[],skipped=[];
+  lines.forEach(function(line,n){
+    var c=splitLine(line,delim);
+    if(n===0&&parseNum(c[2]).v===undefined&&parseNum(c[3]).v===undefined){skipped.push("header");return}
+    if(c.length<4){skipped.push("line "+(n+1)+" has "+c.length+" column"+(c.length===1?"":"s"));return}
+    if(c.length>9){skipped.push("line "+(n+1)+" has "+c.length+" columns; check for commas inside numbers");return}
+    if(delim===","&&c[1]!==undefined&&parseNum(c[1]).v!==undefined){skipped.push("line "+(n+1)+" looks like a number with a comma in it; put quotes round it or paste straight from a spreadsheet");return}
+    rows.push({name:c[0]||"",type:typeOf(c[1],c[0]),gmv:c[2]||"",orders:c[3]||"",ad:c[4]||"",roas:c[5]||"",aff:c[6]||"",cost:c[7]||"",fulfil:c[8]||""});
+  });
+  var affs=rows.map(function(r){return parseNum(r.aff).v}).filter(function(v){return v!==undefined});
+  var scaled=false;
+  if(affs.length&&affs.every(function(v){return v<=1})&&affs.some(function(v){return v>0})){
+    rows.forEach(function(r){var v=parseNum(r.aff).v;if(v!==undefined)r.aff=String(Math.round(v*1000)/10)});scaled=true;}
+  return{rows:rows,skipped:skipped,scaled:scaled};
+}
+function doPaste(replace){
+  var p=parsePaste(document.getElementById("pasteArea").value),st=document.getElementById("pasteStatus");
+  if(!p.rows.length){st.style.color="var(--loss)";st.textContent="No rows found. "+(p.skipped.length?"Skipped: "+p.skipped.join("; ")+".":"Check you copied at least four columns.");return}
+  if(state.example){replace=true;state.example=false;state.vat="inc";renderCosts()}
+  var startAt=replace?0:state.rows.filter(function(r){return !isEmpty(r)}).length;
+  state.rows=replace?p.rows:state.rows.filter(function(r){return !isEmpty(r)}).concat(p.rows);state.example=false;save();renderResults();renderInputs();
+  var flagged=lastR.bad.filter(function(b){return b.i>=startAt}).map(function(b){return esc(b.name)});
+  var msg=p.rows.length+" row"+(p.rows.length>1?"s":"")+" added.";
+  if(p.scaled)msg+=" Affiliate shares looked like decimals (0.82), so they were read as percentages (82).";
+  if(flagged.length)msg+=" "+flagged.length+" need attention and are marked in red: "+flagged.join(", ")+".";
+  var realSkips=p.skipped.filter(function(s){return s!=="header"});
+  if(realSkips.length)msg+=" Not imported: "+realSkips.join("; ")+".";
+  st.style.color=flagged.length||realSkips.length?"var(--loss)":"";st.innerHTML=msg;
+}
+document.getElementById("pasteReplace").onclick=function(){doPaste(true)};
+document.getElementById("pasteAppend").onclick=function(){doPaste(false)};
+
+/* costs */
+var AK=["cogs","platform","creator","fulfil","returns","promo","sampling","other","vel","margin"];
+function renderCosts(){
+  AK.forEach(function(k){document.getElementById("a_"+k).value=state.a[k]});
+  document.getElementById("cur").value=state.cur;
+  document.getElementById("vat").value=state.vat||"ex";
+  document.getElementById("a_loss").value=state.loss;
+  document.getElementById(state.goal==="growth"?"g_growth":"g_profit").checked=true;
+  document.getElementById("remember").checked=remember;
+  document.querySelectorAll(".cursym").forEach(function(s){s.textContent=state.cur});
+}
+AK.forEach(function(k){document.getElementById("a_"+k).addEventListener("input",function(e){var v=num(e.target.value);if(isFinite(v)&&v>=0){state.a[k]=v;save();renderResults()}})});
+document.getElementById("cur").addEventListener("change",function(e){state.cur=e.target.value;save();renderCosts();renderResults()});
+document.getElementById("vat").addEventListener("change",function(e){state.vat=e.target.value;save();renderResults()});
+document.getElementById("a_loss").addEventListener("input",function(e){state.loss=e.target.value;if(state.goal!=="growth"){state.goal="growth";document.getElementById("g_growth").checked=true}save();renderResults()});
+document.querySelectorAll('input[name="goal"]').forEach(function(r){r.addEventListener("change",function(e){state.goal=e.target.value;save();renderResults()})});
+
+/* privacy */
+document.getElementById("remember").addEventListener("change",function(e){
+  remember=e.target.checked;var st=document.getElementById("privStatus");
+  try{localStorage.setItem(PREF,remember?"1":"0");if(remember){localStorage.setItem(KEY,JSON.stringify(state));st.textContent="Your figures will be saved on this device."}else{localStorage.removeItem(KEY);st.textContent="Your figures will not be saved. Closing the page clears them."}}catch(err){st.textContent="This browser is not saving data, so nothing is stored."}
+});
+document.getElementById("clearSaved").onclick=function(){var st=document.getElementById("privStatus");
+  try{localStorage.removeItem(KEY)}catch(err){}
+  state=fresh();
+  renderCosts();renderResults();renderInputs();st.textContent="Saved figures cleared. The example shop is back.";};
+
+/* ---------- test a change ---------- */
+var wiSel=document.getElementById("wi_base"),WI=["price","cost","fulfil","aff","ad"],wiK=1;
+function wiFill(o){
+  if(!o)return;
+  var c=o.c;
+  document.getElementById("wi_price").value=o.price.toFixed(2);
+  document.getElementById("wi_cost").value=c.product.toFixed(2);
+  document.getElementById("wi_fulfil").value=c.fulfil.toFixed(2);
+  document.getElementById("wi_aff").value=String(o.aff);
+  document.getElementById("wi_ad").value=o.adPer.toFixed(2);
+  document.getElementById("wi_roas").value=o.roas?String(o.roas):"";
+  wiK=o.k;
+}
+function wiBlank(){WI.concat(["roas"]).forEach(function(f){document.getElementById("wi_"+f).value=""});
+  document.getElementById("wi_fulfil").value=String(state.a.fulfil);}
+function renderWhatIf(){
+  var R=lastR.ok,prev=wiSel.value;
+  wiSel.innerHTML='<option value="new">A new offer (enter it here)</option>'+R.map(function(o){return'<option value="'+o.i+'">'+(state.example?"Example: ":"")+esc(o.name)+"</option>"}).join("");
+  var keep=prev==="new"||R.some(function(o){return String(o.i)===prev});
+  if(keep)wiSel.value=prev;else if(R.length){wiSel.value=String(R[0].i);wiFill(R[0])}else{wiSel.value="new";wiBlank()}
+  wiCalc();
+}
+function wiBase(){if(wiSel.value==="new")return null;var i=+wiSel.value;return lastR.ok.filter(function(o){return o.i===i})[0]||null}
+function wiCalc(){
+  var o=wiBase(),tb=document.querySelector("#wi_table tbody"),isNew=!o;
+  document.querySelector("#wi_table thead").innerHTML=isNew?"<tr><th></th><th>This offer</th></tr>":"<tr><th></th><th>Current</th><th>Test</th></tr>";
+  var vals={},bad=false,missing=false;
+  WI.forEach(function(f){var e=document.getElementById("wi_"+f),p=parseNum(e.value);
+    var optional=isNew&&(f==="ad"||f==="cost");
+    if(p.blank&&optional){vals[f]=f==="ad"?0:null;e.parentNode.style.borderColor="";return}
+    if(p.blank&&isNew){missing=true;e.parentNode.style.borderColor="";return}
+    if(p.v===undefined||p.v<0||(f==="aff"&&p.v>100)){e.parentNode.style.borderColor="var(--loss)";bad=true}else{e.parentNode.style.borderColor="";vals[f]=p.v}});
+  var re=document.getElementById("wi_roas"),rp=parseNum(re.value);
+  if(rp.bad||(rp.v!==undefined&&rp.v<0)){re.parentNode.style.borderColor="var(--loss)";bad=true}else re.parentNode.style.borderColor="";
+  if(bad){tb.innerHTML='<tr><td colspan="3" class="l neg">Check the fields marked in red.</td></tr>';return}
+  if(missing||!(vals.price>0)){tb.innerHTML='<tr><td colspan="3" class="l">Enter the price, fulfilment and affiliate share (0 if none) to see what this offer earns. Product cost defaults to '+state.a.cogs+'% of price if left blank.</td></tr>';return}
+  if(isNew){wiK=(rp.v>0&&vals.ad>0)?rp.v*vals.ad/vals.price:1;
+    var c1=costs(vals.price,vals.aff/100,vals.cost,vals.fulfil),a1=c1.before-vals.ad,acc1=state.goal==="growth"?Math.max(num(state.loss)||0,0):0;
+    var bas=wiK===1&&!(rp.v>0&&vals.ad>0)?(vals.ad>0?" ‡":" †"):"";
+    function bc(before){return before<-EPS?'<td class="neg">Loses money before ads</td>':before<=EPS?'<td class="neg">Nothing left for ads</td>':"<td>"+x(wiK*vals.price/before)+bas+"</td>"}
+    tb.innerHTML="<tr><td class=\"l\">Price per order</td><td>"+money(vals.price,2)+"</td></tr>"+
+      "<tr><td class=\"l\">Selling costs per order</td><td>"+money(vals.price-c1.before,2)+"</td></tr>"+
+      '<tr><td class="l">Before ads per order</td><td class="'+(c1.before<0?"neg":"")+'">'+money(c1.before,2)+"</td></tr>"+
+      "<tr><td class=\"l\">Ad spend per order</td><td>"+money(vals.ad,2)+"</td></tr>"+
+      '<tr><td class="l"><b>After marketing per order</b></td><td class="'+(a1<0?"neg":"pos")+'"><b>'+money(a1,2)+"</b></td></tr>"+
+      '<tr><td class="l">Margin</td><td class="'+(a1<0?"neg":"")+'">'+pct(a1/vals.price)+"</td></tr>"+
+      "<tr><td class=\"l\">Est. break-even ROAS</td>"+bc(c1.before)+"</tr>"+
+      (rp.v>0&&vals.ad>0?"<tr><td class=\"l\">TikTok reported ROAS</td><td class=\""+(c1.before>EPS&&rp.v>=wiK*vals.price/c1.before?"pos":"neg")+"\">"+x(rp.v)+"</td></tr>":"")+
+      (state.goal==="growth"?"<tr><td class=\"l\">Momentum target ROAS</td>"+bc(c1.before+acc1)+"</tr>":"");
+    return;}
+  var c=costs(vals.price,vals.aff/100,vals.cost,vals.fulfil),after=c.before-vals.ad;
+  var accept=state.goal==="growth"?Math.max(num(state.loss)||0,0):0;
+  function be(price,before){return before<=EPS?null:o.k*price/before}
+  if(vals.cost===null)vals.cost=o.c.product;
+  var nb=be(vals.price,c.before),nt=be(vals.price,c.before+accept);
+  function cell(v,neg){return'<td class="'+(neg?"neg":"")+'">'+v+"</td>"}
+  function beCell(v,before){return before<-EPS?'<td class="neg">Loses money before ads</td>':before<=EPS?'<td class="neg">Nothing left for ads</td>':"<td>"+x(v)+mark(o)+"</td>"}
+  tb.innerHTML=
+    "<tr><td class=\"l\">Price per order</td>"+cell(money(o.price,2))+cell(money(vals.price,2))+"</tr>"+
+    "<tr><td class=\"l\">Selling costs per order</td>"+cell(money(o.price-o.before,2))+cell(money(vals.price-c.before,2))+"</tr>"+
+    "<tr><td class=\"l\">Before ads per order</td>"+cell(money(o.before,2),o.before<0)+cell(money(c.before,2),c.before<0)+"</tr>"+
+    "<tr><td class=\"l\">Ad spend per order</td>"+cell(money(o.adPer,2))+cell(money(vals.ad,2))+"</tr>"+
+    "<tr><td class=\"l\"><b>After marketing per order</b></td>"+cell("<b>"+money(o.after,2)+"</b>",o.after<0)+cell("<b>"+money(after,2)+"</b>",after<0)+"</tr>"+
+    "<tr><td class=\"l\">Margin</td>"+cell(pct(o.margin),o.margin<0)+cell(pct(after/vals.price),after<0)+"</tr>"+
+    "<tr><td class=\"l\">Est. break-even ROAS</td>"+beCell(o.be,o.before)+beCell(nb,c.before)+"</tr>"+
+    (state.goal==="growth"?"<tr><td class=\"l\">Momentum target ROAS</td>"+beCell(o.target,o.before+accept)+beCell(nt,c.before+accept)+"</tr>":"");
+}
+wiSel.addEventListener("change",function(){var o=wiBase();if(o)wiFill(o);else wiBlank();wiCalc()});
+WI.concat(["roas"]).forEach(function(f){document.getElementById("wi_"+f).addEventListener("input",wiCalc)});
+document.getElementById("wi_reset").onclick=function(){var o=wiBase();if(o)wiFill(o);else wiBlank();wiCalc()};
+
+/* ---------- copy for AI ---------- */
+function asText(){
+  var res=compute(),R=res.ok,A=state.a,c=state.cur,lines=[];
+  lines.push("I've attached Following the Value by Next10 Labs. Below are my own TikTok Shop figures from its Profitability Check (margin, velocity and materiality view). Same 30 days for all figures. Currency "+c+". Sales "+(state.vat==="inc"?"include VAT at 20%, removed before costs":"exclude VAT")+".");
+  lines.push("Default cost assumptions: product cost "+A.cogs+"% of price unless a per-order cost is shown, TikTok commission "+A.platform+"%, creator commission "+A.creator+"% on affiliate sales, fulfilment "+c+A.fulfil+" per order unless shown, returns "+A.returns+"%, promotions "+A.promo+"%, sampling "+A.sampling+"%, other selling costs "+A.other+"%. Fast seller from "+A.vel+" orders; strong margin from "+A.margin+"%.");
+  lines.push("Goal this peak: "+(state.goal==="growth"?"momentum, accepting a loss of "+c+(num(state.loss)||0)+" per order":"profit, break even or better")+".");
+  lines.push("");
+  lines.push("Offer | Type | Orders | Sales | Avg price | Affiliate share | Product cost/order | Fulfilment/order | Before ads/order | After marketing/order | Margin | Est. break-even ROAS | Basis | TikTok ROAS | Target ROAS | Read");
+  R.sort(function(a,b){return b.gmv-a.gmv}).forEach(function(o){
+    var basis=o.basis==="tt"?"reported ROAS basis":o.basis==="noads"?"no ads, sales basis":"ROAS not entered, sales basis";
+    var be=o.beState==="loss"?"none (loses money before ads)":o.beState==="zero"?"none (nothing left for ads)":o.be.toFixed(2);
+    lines.push([o.name,TYPES[o.type],o.orders,Math.round(o.gmv),o.price.toFixed(2),o.aff+"%",o.c.product.toFixed(2)+(o.costOverride!==null?" (entered)":" (default %)"),o.c.fulfil.toFixed(2)+(o.fulfilOverride!==null?" (entered)":" (default)"),o.before.toFixed(2),o.after.toFixed(2),pct(o.margin,1),be,basis,o.roas?o.roas.toFixed(2):"n/a",o.target===null?"none":o.target.toFixed(2),QNAME[o.q]+" ("+QACT[o.q].toLowerCase()+")"].join(" | "));
+  });
+  if(res.noOrders.length)lines.push("Ad spend on offers with no orders: "+res.noOrders.map(function(n){return n.name+" "+c+Math.round(n.ad)}).join(", ")+".");
+  if(res.bad.length)lines.push("Rows left out because of input problems: "+res.bad.map(function(b){return b.name}).join(", ")+".");
+  lines.push("");
+  lines.push("Limits: this is a Shop contribution estimate from past figures, before fixed overheads. Break-even ROAS is estimated on TikTok's reported ROAS basis where given; it is a starting point for GMV Max targets, not a guarantee. It does not measure incrementality, customer lifetime value, sales moving to website, Amazon or retail, or stock position. The four reads are candidates for a decision, not decisions.");
+  lines.push("");
+  lines.push("I'm [YOUR ROLE] and I'm trying to decide [YOUR DECISION]. Use the report and these results to help me prepare. Ask me up to three questions about my situation. Then give me a one-page brief showing: 1. The report findings most relevant to my decision, with chapter or exhibit references. 2. Which offers to push, reprice, rebundle, test or stop, and what GMV Max targets to start from. 3. What I should check, challenge or change, and what I can usefully do before Black Friday. Separate evidence from assumptions. Don't invent figures about my business or treat the report as proof of results it does not establish.");
+  return lines.join("\n");
+}
+function copy(text,statusId,fallbackId){
+  var st=document.getElementById(statusId);
+  function fb(){if(!fallbackId){st.textContent="Select the address above to copy it.";return}var t=document.getElementById(fallbackId);t.hidden=false;t.value=text;t.focus();t.select();st.textContent="Copy the selected text below.";}
+  try{navigator.clipboard.writeText(text).then(function(){st.textContent="Copied."},fb)}catch(e){fb()}
+}
+document.getElementById("copyAI").onclick=function(){
+  if(state.example){document.getElementById("copyStatus").textContent="These are the example shop's invented figures. Choose Start with my own numbers first, then copy your results.";return}
+  if(!compute().ok.length){document.getElementById("copyStatus").textContent="Enter at least one offer first.";return}
+  copy(asText(),"copyStatus","copyFallback")};
+document.getElementById("copyAddr").onclick=function(){copy("hello@next10labs.ai","addrStatus")};
+document.getElementById("goOne").onclick=function(){wiSel.value="new";wiBlank();wiCalc();document.getElementById("whatif").scrollIntoView({behavior:"smooth"});document.getElementById("wi_price").focus({preventScroll:true})};
+document.getElementById("goNumbers").onclick=function(){document.getElementById("numbers").scrollIntoView({behavior:"smooth"})};
+document.getElementById("backToRead").onclick=function(){document.getElementById("read").scrollIntoView({behavior:"smooth"})};
+document.getElementById("goMethod").onclick=function(e){e.preventDefault();document.getElementById("methodBox").open=true;document.getElementById("method").scrollIntoView({behavior:"smooth"})};
+document.getElementById("goExample").onclick=function(){if(!state.example){var keep={cur:state.cur,a:state.a};state=fresh();state.cur=keep.cur;state.a=keep.a;renderCosts();renderResults();renderInputs()}document.getElementById("read").scrollIntoView({behavior:"smooth"})};
+window.__n10={compute:compute,state:function(){return state},parseNum:parseNum,parsePaste:parsePaste,asText:asText,setState:function(s){state=s}};
+
+renderCosts();renderResults();renderInputs();
+})();
+</script>
+</body></html>
