@@ -1,494 +1,729 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Next10 Labs | Commercial and measurement advisory for TikTok Shop</title>
-<meta name="description" content="Next10 Labs is an independent commercial and measurement advisory helping consumer brands grow profitably on TikTok Shop and connect it to the whole business.">
-<meta property="og:title" content="Next10 Labs | Commercial and measurement advisory for TikTok Shop">
-<meta property="og:description" content="Next10 Labs is an independent commercial and measurement advisory helping consumer brands grow profitably on TikTok Shop and connect it to the whole business.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Next10 Labs | Following the Value &amp; TikTok Shop Profitability Check</title>
+<meta name="description" content="Independent commercial intelligence for TikTok Shop decisions. Read Following the Value, run the free Profitability Check, and turn what you learn into better business decisions.">
+<link rel="canonical" href="https://next10labs.ai/">
+<meta property="og:title" content="Following the Value: TikTok Shop and the Unbundling of Beauty Retail">
+<meta property="og:description" content="A free report from Next10 Labs for founders and leadership teams deciding how to invest in TikTok Shop. Edition 1, November 2026.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://next10labs.ai">
+<meta property="og:url" content="https://next10labs.ai/">
+<meta property="og:image" content="https://next10labs.ai/images/following-the-value-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-<script async src="https://tally.so/widgets/embed.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-  :root {
-    --ivory: #F7F5EF;
-    --ink: #1A1917;
-    --ink-soft: #6E6A5F;
-    --yellow: #D9A43A;
-    --hairline: #E4DED2;
-  }
+/* Layout: editorial single column on a 1180px measure; palette and type carried from the final Following the Value PDF (cream text pages, deep burgundy pp.55-56, pink accents). Single light look, matching the printed report. */
+:root{
+  --paper:#FAF8F4; --paper-2:#F2EDE5; --blush:#F5E4E8; --ink:#2B1820; --muted:#6B5C63; --wine:#5B0B2B; --wine-2:#7A1F44;
+  --deep:#2A0D17; --deep-2:#36141F; --pinkline:#E28BA8; --pink:#C2416F; --crimson:#B0234F; --ochre:#A67C3A; --rule:#DCCFC2; --white:#FFFFFF; --good:#2F6B3F; --bad:#A3283C;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+a{color:inherit;text-underline-offset:4px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;color:var(--wine);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(40px,5.2vw,66px);line-height:1.04;max-width:15ch}
+h2{font-size:clamp(30px,3.4vw,44px);line-height:1.1;max-width:24ch}
+h3{font-size:24px;line-height:1.2}
+p{margin:0}
+.label{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--wine)}
+.muted{color:var(--muted)}
+.small{font-size:13.5px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 20px;background:var(--wine);color:var(--white);border:1px solid var(--wine);text-decoration:none;font-size:15px;font-weight:500;font-family:var(--body);cursor:pointer}
+.btn:hover{background:var(--wine-2)}
+.btn.ghost{background:transparent;color:var(--wine)}
+.btn.ghost:hover{background:var(--paper-2)}
+.textlink{color:var(--wine);font-size:15px;font-weight:500;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer;font-family:var(--body)}
+.textlink:hover{border-bottom-color:var(--wine)}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
 
-  * { box-sizing: border-box; }
+/* forms */
+.field{display:grid;gap:5px}
+.field label{font-size:13.5px;font-weight:500}
+.field input,.field select,.field textarea{font:15px var(--body);color:var(--ink);background:var(--white);border:1px solid #CBBDB1;padding:11px 12px;min-height:44px;width:100%}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--pink);outline-offset:0;border-color:var(--pink)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--muted);line-height:1.45}
+.check input{margin-top:3px;width:16px;height:16px;flex:none;accent-color:var(--wine)}
+.err{color:var(--bad);font-size:13px}
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--ivory);
-    color: var(--ink);
-  }
 
-  body {
-    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
+/* header */
+header{border-bottom:1px solid var(--rule);background:var(--paper)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:15px;letter-spacing:.18em;color:var(--wine);text-decoration:none;font-weight:500}
+nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap;font-size:14px}
+nav a{text-decoration:none}
+nav a:hover{color:var(--wine)}
+nav .btn{min-height:40px;padding:8px 14px;font-size:14px}
 
-  main {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: clamp(48px, 9vh, 112px) clamp(24px, 6vw, 72px) clamp(64px, 10vh, 120px);
-  }
+.qrstrip{background:var(--blush);font-size:14.5px;border-bottom:1px solid #E2C7CF}
+.qrstrip .wrap{padding-block:10px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.qrstrip a{color:var(--wine);font-weight:600;text-decoration:none;border-bottom:1px solid var(--wine)}
+/* hero */
+.start{margin-top:30px;padding-top:20px;border-top:1px solid var(--rule)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips button{font:500 14px var(--body);color:var(--wine);background:transparent;border:1px solid var(--rule);padding:9px 14px;min-height:42px;cursor:pointer}
+.chips button:hover{border-color:var(--wine)}
+.chips button[aria-pressed="true"]{background:var(--wine);color:#fff;border-color:var(--wine)}
+.useful{margin-top:14px;background:var(--white);border:1px solid var(--rule);border-left:3px solid var(--crimson);padding:16px 18px;display:grid;gap:8px}
+.useful b{font-weight:600;color:var(--ink)}
+.useful .where{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ochre);text-transform:uppercase}
+.useful a{justify-self:start}
+.hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;padding-block:56px;align-items:start}
+.hero .lede{font-size:19px;color:var(--muted);max-width:52ch;margin-top:24px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .talk{margin-top:16px}
+.creds{margin-top:34px;padding-top:18px;border-top:1px solid var(--rule);display:flex;gap:16px;align-items:center}
+.creds img{flex:none;width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:1px solid var(--rule)}
+.creds p{font-size:14px;color:var(--muted);line-height:1.5}
+.creds strong{color:var(--ink);font-weight:600}
 
-  img { max-width: 100%; }
+.report-card{background:var(--white);border:1px solid var(--rule);display:grid}
+.report-card .cover{display:block;width:100%;aspect-ratio:900/506;object-fit:cover;max-width:100%}
+.report-card .inner{padding:24px;display:grid;gap:14px}
+.report-card h2{font-size:28px}
+.report-card .form{display:grid;gap:12px}
+.report-card .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.success{display:grid;gap:12px}
+.success h3{font-size:28px}
+.route{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 0;border-top:1px solid var(--rule);text-decoration:none}
+.route b{display:block;font-weight:600;font-size:15.5px;color:var(--wine)}
+.route span{font-size:13.5px;color:var(--muted)}
+.route i{font-style:normal;color:var(--wine);font-size:20px}
 
-  /* ---- shared primitives ---- */
+/* sections */
+section{border-top:1px solid var(--rule);padding-block:80px}
+.intro{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;align-items:end;margin-bottom:40px}
+.intro p{color:var(--muted);font-size:17px}
+.intro .label{margin-bottom:16px}
 
-  .brand {
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    color: var(--yellow);
-    margin: 0 0 clamp(40px, 6vh, 72px);
-  }
+/* who sees what */
+.sees{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:40px;align-items:start}
+.persp{display:grid;gap:8px}
+.persp button{display:block;width:100%;text-align:left;background:transparent;border:1px solid var(--rule);padding:14px 16px;font:500 15px/1.35 var(--body);color:var(--ink);cursor:pointer}
+.persp button span{display:block;font-weight:400;font-size:13.5px;color:var(--muted);margin-top:3px}
+.persp button[aria-pressed="true"]{border-color:var(--wine);background:var(--white);box-shadow:inset 3px 0 0 var(--wine)}
+.persp button.next10[aria-pressed="true"]{background:var(--wine);color:#fff}
+.persp button.next10[aria-pressed="true"] span{color:#F0DCE3}
+.journey{background:var(--white);border:1px solid var(--rule);padding:28px}
+.journey .disc{border:1px solid var(--rule);padding:14px 16px;text-align:center;font-family:var(--display);font-size:20px;color:var(--wine)}
+.journey .disc small{display:block;font-family:var(--body);font-size:13px;color:var(--muted)}
+.journey svg{display:block;width:100%;height:40px}
+.tills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.till{border:1px solid var(--rule);padding:16px 10px;text-align:center;font-size:14px;font-weight:500;transition:background .25s,color .25s,opacity .25s;opacity:.38}
+.till.on{opacity:1;background:var(--wine);color:#fff;border-color:var(--wine)}
+.caption{margin-top:20px;font-size:15.5px;color:var(--ink);min-height:3.2em}
 
-  .label {
-    display: block;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    color: var(--yellow);
-    margin: 0 0 16px;
-  }
+/* bestseller toggle */
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.seg{display:inline-flex;border:1px solid var(--wine)}
+.seg button{background:transparent;border:0;padding:11px 20px;font:500 15px var(--body);color:var(--wine);cursor:pointer;min-height:44px}
+.seg button[aria-pressed="true"]{background:var(--wine);color:#fff}
+.readout{margin-top:26px}
+.big{font-family:var(--display);font-size:clamp(56px,7vw,84px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.big.neg{color:var(--bad)} .big.pos{color:var(--good)}
+.readout .what{font-size:15px;color:var(--muted);margin-top:6px}
+.scale{position:relative;height:44px;margin-top:26px;border-bottom:1px solid var(--rule)}
+.scale .zero{position:absolute;top:0;bottom:-6px;width:1px;background:var(--ink)}
+.scale .bar{position:absolute;top:12px;height:20px;transition:all .45s ease}
+.scale .tick{position:absolute;bottom:-24px;font-size:11.5px;color:var(--muted);transform:translateX(-50%);font-variant-numeric:tabular-nums}
+.roas{background:var(--white);border:1px solid var(--rule);padding:24px}
+.roas .row{display:grid;grid-template-columns:150px minmax(0,1fr) 54px;gap:12px;align-items:center;margin-top:14px;font-size:14px}
+.roas .track{height:14px;background:var(--paper-2);position:relative}
+.roas .fill{position:absolute;inset:0 auto 0 0}
+.roas .num{font-family:var(--display);font-size:22px;color:var(--wine);text-align:right;font-variant-numeric:tabular-nums}
+.note{font-size:12.5px;color:var(--muted);margin-top:18px;line-height:1.5}
 
-  .muted {
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    margin: 0 0 16px;
-  }
+/* MVM */
+.mvm{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center}
+.matrix{background:var(--white);border:1px solid var(--rule);padding:18px}
+.matrix svg{width:100%;height:auto;display:block}
+.matrix .q{cursor:pointer}
+.qinfo{margin-top:22px;border-left:2px solid var(--ochre);padding-left:18px;min-height:5.6em}
+.qinfo strong{font-family:var(--display);font-weight:400;font-size:24px;color:var(--wine);display:block}
+.mvm ul{padding:0;margin:22px 0 0;list-style:none;display:grid;gap:8px;font-size:15px}
+.mvm li::before{content:"·";color:var(--wine);font-weight:700;margin-right:8px}
 
-  .link-accent {
-    display: inline-block;
-    font-weight: 600;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--yellow);
-    padding-bottom: 2px;
-  }
+/* lessons */
+.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.group h3{font-size:22px;padding-top:16px;border-top:2px solid var(--wine);min-height:3.6em}
+.group .gnum{font-family:var(--mono);font-size:12px;color:var(--crimson);letter-spacing:.12em;display:block;margin-bottom:8px}
+details{border-bottom:1px solid var(--rule)}
+details summary{list-style:none;cursor:pointer;padding:14px 26px 14px 0;font-weight:500;font-size:15.5px;line-height:1.4;position:relative}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";position:absolute;right:2px;top:12px;font-size:20px;color:var(--wine);font-weight:400}
+details[open] summary::after{content:"\2212"}
+details p{font-size:14.5px;color:var(--muted);padding-bottom:14px}
+details .ref{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ochre);margin-top:6px}
 
-  .link-accent:hover {
-    color: var(--yellow);
-  }
+/* AI */
+.ai{background:var(--blush)}
+.ai .wrap{padding-block:80px}
+.aigrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:48px;align-items:start}
+.steps{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:16px 0;border-top:1px solid #E2C7CF;font-size:16px}
+.steps li::before{content:"0" counter(s);font-family:var(--display);font-size:24px;color:var(--crimson);line-height:1}
+.promptbox{background:var(--white);border:1px solid #E2C7CF;padding:24px;display:grid;gap:14px}
+.promptbox .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:12px}
+.prompt{background:var(--paper);border:1px solid var(--rule);padding:16px;font-size:14.5px;line-height:1.55;white-space:pre-wrap;color:var(--ink);max-height:none}
+.prompt mark{background:#F3D3DD;color:var(--wine);padding:0 2px}
+.copyrow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 
-  strong {
-    font-weight: 700;
-  }
+/* how we work: matches report p55 */
+.side{background:var(--deep);color:#EADFE3}
+.side .wrap{padding-block:80px}
+.side h2,.side h3{color:#FBF4F6}
+.side .label{color:var(--pinkline)}
+.sidegrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:48px;align-items:start}
+.side .lead{font-size:17px;margin-top:22px;color:#E8DADF}
+.side .statement{font-family:var(--display);font-size:clamp(22px,2.3vw,28px);line-height:1.3;color:#FBF4F6;margin-top:24px;padding-top:24px;border-top:1px solid #E28BA866}
+.side .run{margin-top:20px;font-size:15.5px;color:#D9C7CE}
+.side .run b{color:#fff;font-weight:500}
+.panel{background:var(--deep-2);border:1px solid #E28BA855;border-radius:6px;padding:28px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:18px}
+.three .n,.ways2 .n{font-family:var(--display);font-size:16px;color:var(--pinkline)}
+.three h3{font-size:28px;font-weight:300;margin-top:4px}
+.three p{font-size:14.5px;margin-top:8px;color:#D9C7CE}
+.ways2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:18px;padding-top:24px;border-top:1px solid #ffffff22}
+.ways2 h3{font-size:23px}
+.ways2 p{font-size:14.5px;margin-top:8px;color:#D9C7CE}
+.callout{margin-top:24px;background:#ffffff0d;border-left:3px solid var(--pinkline);padding:14px 18px;font-size:14.5px;color:#E8DADF}
+.callout b{color:#fff}
+.side .indep{font-family:var(--display);font-size:clamp(22px,2.3vw,28px);color:#fff;margin-top:40px}
 
-  .section {
-    margin: 0;
-  }
+/* enquiry */
+.enq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:48px;align-items:start}
+.topics{display:grid;gap:0}
+.topic{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;text-align:left;width:100%;background:transparent;border:0;border-top:1px solid var(--rule);padding:18px 0;cursor:pointer;font-family:var(--body);color:var(--ink)}
+.topic:last-child{border-bottom:1px solid var(--rule)}
+.topic h3{font-size:22px}
+.topic p{font-size:14.5px;color:var(--muted);margin-top:4px}
+.topic i{font-style:normal;font-size:13px;color:var(--wine);border:1px solid var(--rule);padding:6px 10px;white-space:nowrap}
+.topic[aria-pressed="true"] i{background:var(--wine);color:#fff;border-color:var(--wine)}
+.enqform{background:var(--white);border:1px solid var(--rule);padding:26px;display:grid;gap:14px}
+.enqform .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 
-  .divider {
-    border: none;
-    border-top: 1px solid var(--hairline);
-    margin: clamp(64px, 9vh, 96px) 0;
-  }
+/* about: matches report p56 */
+.about{background:var(--deep);color:#EADFE3}
+.about .wrap{padding-block:80px}
+.about h2,.about h3{color:#FBF4F6}
+.about .label{color:var(--pinkline)}
+.aboutgrid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:56px;align-items:start}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--pinkline);border-radius:6px;display:block}
+.who{margin-top:18px}
+.who h3{font-size:32px;margin-top:6px}
+.who .cap{font-size:14px;color:#CDB8C0}
+.board{margin-top:16px;padding-top:16px;border-top:1px solid #ffffff22;font-size:14.5px;color:#D9C7CE}
+.about .leadp{font-family:var(--display);font-size:clamp(21px,2.1vw,26px);line-height:1.35;color:#FBF4F6;margin-top:20px}
+.about .bodyp{font-size:16px;margin-top:14px;color:#D9C7CE;max-width:64ch}
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #E28BA855;border-radius:6px;margin-top:28px}
+.figs div{padding:18px 20px}
+.figs div + div{border-left:1px solid #E28BA855}
+.figs b{display:block;font-family:var(--display);font-weight:300;font-size:clamp(32px,3.4vw,42px);color:var(--pinkline);line-height:1.05}
+.figs span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:#CDB8C0}
+.about .statement{font-family:var(--display);font-size:clamp(21px,2.1vw,26px);line-height:1.35;color:#FBF4F6;margin-top:26px;padding-top:22px;border-top:1px solid #E28BA866}
+.bench{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin-top:22px;font-size:15px;color:#D9C7CE}
+.about a.textlink{color:var(--pinkline);border-bottom-color:#E28BA866}
 
-  /* ---- hero ---- */
+/* final */
+.final{background:var(--paper-2)}
+.final .wrap{padding-block:72px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:center}
+.contact{display:grid;gap:8px;font-size:15px}
+.contact span{user-select:all}
+footer{font-size:12.5px;color:var(--muted);padding-block:26px 40px;border-top:1px solid var(--rule)}
 
-  .headline {
-    font-size: clamp(26px, 3.4vw, 38px);
-    font-weight: 700;
-    line-height: 1.35;
-    letter-spacing: -0.005em;
-    margin: 0 0 clamp(28px, 4vh, 40px);
-    max-width: 34ch;
-  }
-
-  .hero-sub {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    margin: 0 0 clamp(40px, 6vh, 56px);
-    max-width: 54ch;
-  }
-
-  .services {
-    margin: 0 0 clamp(44px, 6vh, 60px);
-  }
-
-  .service {
-    display: grid;
-    grid-template-columns: 32px 1fr;
-    column-gap: 16px;
-    margin: 0 0 clamp(26px, 4vh, 36px);
-    max-width: 58ch;
-  }
-
-  .service:last-child {
-    margin-bottom: 0;
-  }
-
-  .service .num {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-soft);
-    padding-top: 3px;
-  }
-
-  .service p {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 500;
-    line-height: 1.55;
-    color: var(--ink);
-    margin: 0;
-  }
-
-  .connective {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 500;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0 0 clamp(40px, 6vh, 56px);
-    max-width: 48ch;
-  }
-
-  .conclusion {
-    font-size: clamp(19px, 2.4vw, 24px);
-    font-weight: 700;
-    line-height: 1.5;
-    margin: 0 0 clamp(48px, 7vh, 72px);
-    max-width: 38ch;
-  }
-
-  .report-lede {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 600;
-    color: var(--ink);
-    margin: 0 0 4px;
-  }
-
-  .report-sub {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    color: var(--ink-soft);
-    margin: 0 0 16px;
-  }
-
-  .report-cta {
-    font-size: 16px;
-    margin: 0;
-  }
-
-  /* ---- who we are ---- */
-
-  .founder-profile {
-    display: grid;
-    grid-template-columns: minmax(260px, 340px) 1fr;
-    column-gap: clamp(48px, 6vw, 96px);
-    align-items: start;
-    margin: 0 0 clamp(56px, 7vh, 80px);
-  }
-
-  @media (max-width: 680px) {
-    .founder-profile {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .portrait {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 360px;
-    aspect-ratio: 1122 / 1402;
-    object-fit: cover;
-    object-position: center 18%;
-    margin: 0 0 24px;
-  }
-
-  .profile-name {
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--ink);
-    margin: 0 0 6px;
-  }
-
-  .profile-role {
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(15px, 1.5vw, 16px);
-    color: var(--ink-soft);
-    margin: 0 0 20px;
-  }
-
-  .credentials {
-    list-style: none;
-    margin: 0 0 20px;
-    padding: 0;
-    max-width: 42ch;
-  }
-
-  .credentials li {
-    position: relative;
-    padding-left: 18px;
-    font-size: clamp(15px, 1.5vw, 16px);
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0 0 8px;
-  }
-
-  .credentials li:last-child {
-    margin-bottom: 0;
-  }
-
-  .credentials li::before {
-    content: "\2013";
-    position: absolute;
-    left: 0;
-    color: var(--ink-soft);
-  }
-
-  .sub-label {
-    margin-bottom: 14px;
-  }
-
-  .specialist-statement {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0 0 clamp(44px, 6vh, 60px);
-    max-width: 58ch;
-  }
-
-  .experience {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    margin: 0;
-    max-width: 72ch;
-  }
-
-  /* ---- chosen a side ---- */
-
-  .label-lede {
-    font-size: clamp(16px, 1.9vw, 19px);
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--yellow);
-    margin: 0 0 18px;
-  }
-
-  .side-lede {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    line-height: 1.65;
-    color: var(--ink);
-    margin: 0 0 clamp(44px, 6vh, 60px);
-    max-width: 62ch;
-  }
-
-  .pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: clamp(32px, 4vw, 56px);
-    row-gap: 32px;
-    margin: 0 0 clamp(44px, 6vh, 60px);
-  }
-
-  @media (max-width: 820px) {
-    .pillars {
-      grid-template-columns: 1fr;
-      row-gap: clamp(28px, 4vh, 36px);
-    }
-  }
-
-  .pillars p {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0;
-  }
-
-  .pillars .pillar-label {
-    font-weight: 700;
-    margin: 0 0 6px;
-  }
-
-  .independence {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0;
-    max-width: 62ch;
-  }
-
-  /* ---- research ---- */
-
-  .research-title {
-    font-size: clamp(19px, 2.2vw, 23px);
-    font-weight: 700;
-    line-height: 1.45;
-    color: var(--ink);
-    margin: 0 0 14px;
-    max-width: 58ch;
-  }
-
-  .research-description {
-    font-size: clamp(16px, 1.6vw, 18px);
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0 0 clamp(28px, 4vh, 40px);
-    max-width: 58ch;
-  }
-
-  .research-meta {
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--ink-soft);
-    margin: 0 0 16px;
-  }
-
-  .research-cta {
-    font-size: 16px;
-    margin: 0 0 clamp(36px, 5vh, 48px);
-  }
-
-  .talk-to-us {
-    margin: 0 0 10px;
-  }
-
-  .email-link {
-    font-size: 16px;
-  }
-
-  @media (max-width: 560px) {
-    .headline,
-    .conclusion,
-    .side-lede,
-    .research-title {
-      max-width: none;
-    }
-
-    .divider {
-      margin: 44px 0;
-    }
-  }
+@media (max-width:860px){
+  .hero,.intro,.sees,.case,.mvm,.aigrid,.sidegrid,.enq,.aboutgrid,.final .wrap{grid-template-columns:minmax(0,1fr);gap:32px}
+  .hero{padding-block:36px}
+  .groups,.three,.ways2{grid-template-columns:minmax(0,1fr);gap:24px}
+  .group h3{min-height:0}
+  .tills{grid-template-columns:repeat(2,minmax(0,1fr))}
+  section,.side .wrap,.ai .wrap,.about .wrap{padding-block:52px}
+  .photo{max-width:300px}
+  nav{gap:14px;font-size:13px}
+  .hero .actions .btn{flex:1 1 100%}
+  .report-card .two,.enqform .two,.promptbox .two{grid-template-columns:minmax(0,1fr)}
+  .figs{grid-template-columns:minmax(0,1fr)}
+  .figs div + div{border-left:0;border-top:1px solid #E28BA855}
+  .roas .row{grid-template-columns:110px minmax(0,1fr) 48px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-<main>
-  <p class="brand">NEXT10 LABS</p>
 
-  <section class="section hero">
-    <h1 class="headline">Leverage TikTok Shop as a key driver of whole-business growth.</h1>
 
-    <p class="hero-sub">We work with consumer brand founders and leadership teams to engineer TikTok Shop around two things that matter.</p>
+<header><div class="wrap">
+  <a class="logo" href="#top">NEXT10 LABS</a>
+  <nav aria-label="Main">
+    <a href="#get">The report</a>
+    <a href="/profitability-check/">Profitability Check</a>
+    <a href="#ai">Use it with AI</a>
+    <a href="#how">How we work</a>
+    <a href="#about">About</a>
+    <a class="btn" href="#contact">Bring us a decision</a>
+  </nav>
+</div></header>
+<div class="qrstrip"><div class="wrap"><span>Scanned the code in the report?</span> <a href="/profitability-check/">Go straight to the free Profitability Check →</a></div></div>
 
-    <div class="services">
-      <div class="service">
-        <span class="num">01.</span>
-        <p>Understand your numbers and drive profitable growth.</p>
+<main id="top">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="label">Free from Next10 Labs · Ahead of Black Friday</div>
+      <h1 style="margin-top:20px">Before you invest another pound in TikTok Shop.</h1>
+      <p class="lede">Black Friday is weeks away. <i>Following the Value</i> shows where TikTok Shop creates value, where it's lost and where it's misread, and what founders and leadership teams can do about it now, with the evidence they already hold. It's free, and you don't need to read it all first.</p>
+      <p style="margin-top:14px;font-size:16px"><b style="color:var(--wine)">Short of time before Black Friday?</b> Start with the practical guide on pp.53–54.</p>
+      <div class="actions">
+        <a class="btn" href="#get">Get the free report</a>
+        <a class="btn ghost" href="/profitability-check/">Run the free Profitability Check</a>
       </div>
-      <div class="service">
-        <span class="num">02.</span>
-        <p>Measure what TikTok Shop really adds across digital and retail.</p>
+      <div class="talk"><a class="textlink" href="#contact">Facing a decision before peak? Bring it to us →</a></div>
+      <div class="start">
+        <div class="label">Start where you are</div>
+        <div class="chips" role="group" aria-label="Choose your role">
+          <button type="button" data-r="ceo" aria-pressed="true">Founder or CEO</button>
+          <button type="button" data-r="cmo" aria-pressed="false">CMO or marketing lead</button>
+          <button type="button" data-r="shop" aria-pressed="false">Running the Shop</button>
+          <button type="button" data-r="retail" aria-pressed="false">Selling through retailers</button>
+          <button type="button" data-r="inv" aria-pressed="false">Investor or board</button>
+        </div>
+        <div class="useful" id="useful" aria-live="polite"></div>
       </div>
-    </div>
-
-    <p class="connective">Both start by agreeing the evidence management will use to make the investment decision.</p>
-
-    <p class="conclusion">So leadership can allocate TikTok Shop investment and budget across teams with confidence.</p>
-
-    <div class="report-prompt">
-      <p class="report-lede">Following the Value:</p>
-      <p class="report-sub">the TikTok Shop report for beauty leaders.</p>
-      <p class="report-cta"><a class="link-accent" href="#tally-open=D4gbKR">Get it first &rarr;</a></p>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <section class="section who-we-are">
-    <span class="label">WHO WE ARE</span>
-
-    <div class="founder-profile">
-      <img class="portrait" src="images/nnenna-onuba.webp" width="1122" height="1402" loading="lazy" alt="Portrait of Nnenna Onuba">
-      <div class="founder-text">
-        <p class="profile-name">NNENNA ONUBA</p>
-        <p class="profile-role">Brand value and investment</p>
-        <ul class="credentials">
-          <li>PwC-trained CA; 10 years in M&amp;A at Rothschild</li>
-          <li>£20bn+ in transactions</li>
-          <li>Founder/operator, LBB Skin; co-led Nailberry sale</li>
-          <li>Consumer investor; NED, British Beauty Council</li>
-        </ul>
-        <a class="link-accent" href="https://www.linkedin.com/in/nnennaonuba/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+      <div class="creds">
+        <img src="/images/nnenna-onuba.webp" alt="Nnenna Onuba">
+        <p><strong>Nnenna Onuba, Founder.</strong> Former Rothschild M&amp;A banker · £20bn+ of transactions · founder and operator · NED, British Beauty Council</p>
       </div>
     </div>
 
-    <p class="label sub-label">SPECIALIST BENCH</p>
-    <p class="specialist-statement">We bring in senior measurement, data and commercial specialists where the question requires them.</p>
-
-    <p class="label sub-label">SELECTED EXPERIENCE</p>
-    <p class="experience">Rothschild &middot; British Beauty Council &middot; PwC &middot; LBB Skin &middot; Nailberry</p>
-  </section>
-
-  <hr class="divider">
-
-  <section class="section side">
-    <span class="label label-lede">WE&rsquo;VE CHOSEN A SIDE. IT&rsquo;S YOURS.</span>
-
-    <p class="side-lede">Platforms, agencies and internal teams each optimise to their own numbers and targets, so no one owns the whole view of TikTok Shop. We do. We work alongside your leadership team and agency to give TikTok Shop a clear job, and hold it to three tests.</p>
-
-    <div class="pillars">
-      <div class="pillar">
-        <p class="pillar-label">Growth.</p>
-        <p>Acquire and retain the highest-value customers.</p>
+    <aside class="report-card" id="get" aria-label="Get the report">
+      <img class="cover" src="/images/following-the-value-cover.jpg" alt="Cover of Following the Value: TikTok Shop and the Unbundling of Beauty Retail, Edition 1, November 2026">
+      <div class="inner">
+        <div id="getForm">
+          <div class="label">New publication · Edition 1 · November 2026</div>
+          <h2 style="margin-top:10px">Get Following the Value</h2>
+          <p class="small" style="margin-top:6px">Free report for founders and leadership teams deciding how to invest in TikTok Shop.</p>
+          <form class="form" id="rform" novalidate style="margin-top:14px">
+            <div class="two">
+              <div class="field"><label for="r_name">Name</label><input id="r_name" autocomplete="name"></div>
+              <div class="field"><label for="r_email">Work email</label><input id="r_email" type="email" autocomplete="email" placeholder="you@company.com"></div>
+            </div>
+            <div class="field"><label for="r_co">Company</label><input id="r_co" autocomplete="organization"></div>
+            <div class="field"><label for="r_topic">Where are you starting? (optional)</label>
+              <select id="r_topic">
+                <option value="">Choose one</option>
+                <option>Deciding whether to launch or scale TikTok Shop</option>
+                <option>Running a Shop with strong sales but uncertain profitability</option>
+                <option>Funding TikTok while the value appears elsewhere</option>
+                <option>Selling alongside retail partners on TikTok Shop</option>
+                <option>Trying to grow without simply outspending competitors</option>
+                <option>General interest in the research</option>
+              </select></div>
+            <label class="check"><input type="checkbox" id="r_opt"> Keep me informed about Next10 Labs research and Learn with us sessions.</label>
+            <p class="err" id="r_err" hidden></p>
+            <button class="btn" type="submit" id="r_btn">Get the free report</button>
+            <p class="small" style="font-size:12.5px">We use your details to send you the report. You'll only hear from us about research and events if you tick the box, and you can unsubscribe at any time.</p>
+          </form>
+        </div>
+        <div class="success" id="getDone" hidden>
+          <div class="label">Thank you</div>
+          <h3>Your report is ready.</h3>
+          <p class="small">Start with the decision you're facing. You don't need to read the whole report first.</p>
+          <div>
+            <a class="route" id="dl" href="/following-the-value.pdf" target="_blank" rel="noopener"><div><b>Download the report</b><span>The full PDF, to read or save</span></div><i>↓</i></a>
+            <a class="route" href="#ai"><div><b>Put the report to work with AI</b><span>Prepare a brief for your next decision</span></div><i>→</i></a>
+            <a class="route" href="/profitability-check/"><div><b>Already trading? Check your profitability</b><span>Use your own numbers, privately</span></div><i>→</i></a>
+          </div>
+        </div>
       </div>
-      <div class="pillar">
-        <p class="pillar-label">Profitability.</p>
-        <p>Drive true contribution discipline across the wider business.</p>
+    </aside>
+  </div>
+</div>
+
+<!-- The blind spot -->
+<section><div class="wrap">
+  <div class="intro">
+    <div><div class="label">The blind spot</div><h2>Each business and team only sees part of the picture.</h2></div>
+    <p><b style="color:var(--ink)">A business can hit its channel targets, with every team making sensible decisions, and still put capital in the wrong place.</b> When a customer can discover a product in one place and buy it in another, the value can land across a brand's Shop, its website, Amazon or a retailer's till. Few have an end-to-end view of what the activity creating that value is worth, or how much capital it deserves.</p>
+  </div>
+  <div class="sees">
+    <div class="persp" role="group" aria-label="Choose a perspective">
+      <button type="button" data-k="mkt" aria-pressed="true">Marketing and ecommerce teams<span>Supported by agencies, setting the strategy and running the day-to-day activity.</span></button>
+      <button type="button" data-k="meas" aria-pressed="false">Data and measurement specialists<span>Assessing its impact.</span></button>
+      <button type="button" data-k="lead" aria-pressed="false">Business leaders<span>Making the final call on where to invest.</span></button>
+      <button type="button" data-k="ret" aria-pressed="false">Retail partners<span>Holding another part of the evidence. Each works to its own numbers and targets.</span></button>
+      <button type="button" class="next10" data-k="n10" aria-pressed="false">Next10 Labs<span>The end-to-end view, independent and evidence-led.</span></button>
+    </div>
+    <div class="journey">
+      <div class="disc">Discovered on TikTok<small>a creator video, a LIVE, an ad</small></div>
+      <svg viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true"><path d="M200 0 V14 M50 14 H350 M50 14 V40 M150 14 V40 M250 14 V40 M350 14 V40" stroke="#DCCFC2" stroke-width="1.5" fill="none" vector-effect="non-scaling-stroke"/></svg>
+      <div class="tills">
+        <div class="till" data-t="shop">TikTok Shop</div>
+        <div class="till" data-t="web">Brand website</div>
+        <div class="till" data-t="amz">Amazon</div>
+        <div class="till" data-t="ret">Retailer's till</div>
       </div>
-      <div class="pillar">
-        <p class="pillar-label">Brand equity.</p>
-        <p>Turn TikTok learning into stronger long-term brand value.</p>
+      <p class="caption" id="cap" aria-live="polite"></p>
+    </div>
+  </div>
+</div></section>
+
+<!-- The case -->
+<section><div class="wrap">
+  <div class="intro">
+    <div><div class="label">From the report</div><h2>The same bestseller lost money as a single and made money as a two-pack.</h2></div>
+    <p>The product didn't change. The economics of the offer did.</p>
+  </div>
+  <div class="case">
+    <div>
+      <div class="seg" role="group" aria-label="Choose offer">
+        <button type="button" data-o="single" aria-pressed="true">Single</button>
+        <button type="button" data-o="two" aria-pressed="false">Two-pack</button>
+      </div>
+      <div class="readout">
+        <div class="big neg" id="big">−$0.15</div>
+        <div class="what" id="what">Contribution per order, after selling costs. Lost money.</div>
+      </div>
+      <div class="scale" aria-hidden="true" id="scale"></div>
+    </div>
+    <div class="roas">
+      <div class="label">The single, on its ad numbers</div>
+      <div class="row"><span>ROAS earned</span><div class="track"><div class="fill" style="width:78%;background:var(--wine)"></div></div><span class="num">3.9x</span></div>
+      <div class="row"><span>Needed to break even*</span><div class="track"><div class="fill" style="width:82%;background:var(--ochre)"></div></div><span class="num">4.1x</span></div>
+      <p style="margin-top:18px;font-size:15.5px">Nearly 4x ROAS. Still underwater. Know the break-even ROAS of every offer, after its other selling costs, before you set your GMV Max target.</p>
+      <p class="note">Next10 analysis of anonymised brand data, last 30 days, July 2026. Modelled contribution after selling costs, before fixed overheads. Results depend on cost assumptions. The comparison does not prove that changing the pack caused the difference.<br>*Next10 Labs model, on the same basis as TikTok's reported GMV Max ROI.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- Profitability Check -->
+<section id="check"><div class="wrap">
+  <div class="mvm">
+    <div>
+      <div class="label">Running a Shop? Get your range right before Black Friday</div>
+      <h2 style="margin-top:16px">Your biggest seller may not be your most profitable offer.</h2>
+      <p style="margin-top:20px;color:var(--muted)">The Profitability Check gives you your own Margin, Velocity, Materiality view of every product and offer, showing where you're leaving profit on the table.</p>
+      <ul>
+        <li><b>Margin.</b> What each offer earns after all selling costs.</li>
+        <li><b>Velocity.</b> How quickly it sells.</li>
+        <li><b>Materiality.</b> How much it matters to the business.</li>
+      </ul>
+      <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="/profitability-check/">Run the Profitability Check</a><a class="btn ghost" href="/profitability-check/#read">See it with example figures</a></div>
+      <p class="small" style="margin-top:14px">No sign-up. Start with one offer or your whole range. Your figures stay in your browser, are not sent to Next10 and are only saved if you choose.</p>
+    </div>
+    <div>
+      <div class="matrix">
+        <svg viewBox="0 0 440 400" role="img" aria-label="Margin, Velocity, Materiality matrix with four groups">
+          <g class="q" data-q="gold"><rect x="50" y="10" width="185" height="170" fill="#F5EEDF"/><text x="62" y="34" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.5" fill="#5B0B2B">POTENTIAL GOLD</text></g>
+          <g class="q" data-q="hero"><rect x="240" y="10" width="190" height="170" fill="#EFE3E7"/><text x="252" y="34" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.5" fill="#5B0B2B">TRUE HEROES</text></g>
+          <g class="q" data-q="stop"><rect x="50" y="185" width="185" height="170" fill="#F2EFEA"/><text x="62" y="209" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.5" fill="#5B0B2B">STOP OR PROVE</text></g>
+          <g class="q" data-q="work"><rect x="240" y="185" width="190" height="170" fill="#F6ECE3"/><text x="252" y="209" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.5" fill="#5B0B2B">WORKHORSES</text></g>
+          <g fill="#5B0B2B" fill-opacity=".72" pointer-events="none">
+            <circle cx="120" cy="110" r="9"/><circle cx="170" cy="80" r="6"/>
+            <circle cx="330" cy="90" r="22"/><circle cx="390" cy="130" r="13"/>
+            <circle cx="300" cy="270" r="26"/><circle cx="380" cy="240" r="16"/><circle cx="360" cy="310" r="10"/>
+            <circle cx="110" cy="290" r="8"/><circle cx="170" cy="250" r="5"/>
+          </g>
+          <line x1="50" y1="182.5" x2="430" y2="182.5" stroke="#2B1820" stroke-width="1"/>
+          <text x="240" y="380" text-anchor="middle" font-family="Hanken Grotesk, Arial, sans-serif" font-size="13" fill="#6B5C63">Velocity: how quickly it sells →</text>
+          <text x="22" y="182" text-anchor="middle" transform="rotate(-90 22 182)" font-family="Hanken Grotesk, Arial, sans-serif" font-size="13" fill="#6B5C63">Margin after selling costs →</text>
+        </svg>
+      </div>
+      <div class="qinfo" id="qinfo" aria-live="polite"></div>
+      <p class="small" style="margin-top:10px">Illustrative. Circle size shows materiality. Tap a group.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- The guide -->
+<section id="report"><div class="wrap">
+  <div class="intro">
+    <div><div class="label">Start with the decision on your desk</div><h2>Before you invest another pound in TikTok Shop</h2></div>
+    <div>
+      <p>Eleven lessons, grouped by where you are now. Find yours, then act. Short of time? This practical guide is on pp.53–54 of the report.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px"><a class="btn" href="#get">Get the free report</a></div>
+    </div>
+  </div>
+  <div class="groups">
+    <div class="group">
+      <h3><span class="gnum">01</span>Before you launch, know this.</h3>
+      <details><summary>TikTok or TikTok Shop? Know what Shop adds, and what it costs.</summary><p>TikTok Shop lets you capture and measure demand through sales, closing the loop between discovery and purchase. The flywheel starts with the right product and offer.<span class="ref">EXHIBIT 1.7 · CHAPTER 6</span></p></details>
+      <details><summary>Don't underestimate the creator operation.</summary><p>Test offers creators can sell before scaling sampling. Recruit widely, then find, nurture and back the few who consistently convert.<span class="ref">SECTION 1.3 · EXHIBIT 1.9</span></p></details>
+      <details><summary>Decide how much profitability matters from day one.</summary><p>Know the break-even ROAS of every product or offer, after its other selling costs. Otherwise, you can scale a loss without realising it.<span class="ref">EXHIBIT 2.3 · SECTION 5.1</span></p></details>
+      <details><summary>Premium brand? Don't judge content by sales alone.</summary><p>Judge what the content sells and what it teaches customers about your brand.<span class="ref">PLAYBOOK 4 · SECTION 6.2</span></p></details>
+    </div>
+    <div class="group">
+      <h3><span class="gnum">02</span>Running a Shop? Get your range right before your next peak.</h3>
+      <details><summary>Choose what you push, and how you bundle it.</summary><p>Ahead of Black Friday, deciding which products and bundles to back matters more than simply adding creators or media. Know what each offer earns after all selling costs before paying to scale it.<span class="ref">EXHIBIT 3.1 · PLAYBOOK 7</span></p></details>
+      <details><summary>Set your baseline before the spend starts.</summary><p>Know your normal sales and repeat purchases, and agree what peak should prove. After peak, check what changed across Shop, website, Amazon and retail.<span class="ref">PLAYBOOK 1 · SECTIONS 5.3–5.4</span></p></details>
+      <details><summary>Review every product and offer through the MVM: Margin, Velocity, Materiality.</summary><p>Back true heroes, reprice or rebundle workhorses, test potential gold, and stop or prove the rest.<span class="ref">EXHIBIT 6.2</span></p></details>
+      <details><summary>Make the next investment conditional.</summary><p>Not every order has to make money, but the reason for losing money must be explicit, bounded and testable.<span class="ref">EXHIBIT 5.3 · SECTIONS 5.5 AND 6.3</span></p></details>
+    </div>
+    <div class="group">
+      <h3><span class="gnum">03</span>Selling alongside retailers? Know where the profit lands.</h3>
+      <details><summary>TikTok-native and considering retail? Prove the proposition first.</summary><p>Use a bounded product test to show sustained demand, then take that evidence to buyers to support ranging and stock decisions.<span class="ref">PLAYBOOK 3 · SECTION 5.2</span></p></details>
+      <details><summary>Your Shop sales can fall while your creators are working.</summary><p>A customer may discover a product on TikTok but buy it at a retailer instead. Look across both businesses before judging what TikTok added.<span class="ref">SECTIONS 4.2–4.3 · EXHIBIT 4.1</span></p></details>
+      <details><summary>Who pays for the demand? Make the evidence part of the deal.</summary><p>Agree who captures the value, who carries the cost and whether the incentives work. Keep data-sharing within legal boundaries.<span class="ref">SECTIONS 4.4–4.5 · LEGAL APPENDIX</span></p></details>
+    </div>
+  </div>
+</div></section>
+
+<!-- Put the report to work with AI -->
+<div class="ai" id="ai"><div class="wrap">
+  <div class="aigrid">
+    <div>
+      <div class="label">Put this report to work</div>
+      <h2 style="margin-top:16px">Use the report on your own decision, before Black Friday.</h2>
+      <p style="margin-top:18px;color:var(--muted)">No company data needed. Your own AI assistant does the reading with you.</p>
+      <ol class="steps">
+        <li>Get the report and open the AI assistant you already use.</li>
+        <li>Attach the PDF and copy the prompt.</li>
+        <li>Tell it what you're trying to decide.</li>
+      </ol>
+      <p class="small" style="margin-top:18px">Already ran the <a href="/profitability-check/" style="color:var(--wine)">Profitability Check</a>? Use its <b>Copy my results</b> button and paste them in with the prompt.</p>
+    </div>
+    <div class="promptbox">
+      <div class="two">
+        <div class="field"><label for="p_role">I'm a…</label><input id="p_role" placeholder="founder, CFO, head of ecommerce"></div>
+        <div class="field"><label for="p_dec">Trying to decide…</label><input id="p_dec" placeholder="which offers to back for Black Friday"></div>
+      </div>
+      <div class="prompt" id="promptText" aria-live="polite"></div>
+      <div class="copyrow"><button class="btn" type="button" id="copyPrompt">Copy the prompt</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- How we work: report p55 -->
+<div class="side" id="how"><div class="wrap">
+  <div class="sidegrid">
+    <div>
+      <div class="label">Working with Next10 Labs</div>
+      <h2 style="margin-top:16px">Turn what TikTok Shop teaches you into a competitive advantage.</h2>
+      <p class="lead">This report shows what we've found. The answers that matter most for your business are private: what good looks like for your Shop, which products and bundles to test or scale and when to pull back, and what your TikTok customers are really worth. That's where your advantage lives, and where our work begins.</p>
+      <p class="statement">We work with founders and leadership teams to turn what TikTok Shop teaches them into a competitive advantage across the business: better products and offers, sharper content and brand positioning, smarter investment and more valuable growth. Not just a bigger channel.</p>
+      <p class="run"><b>We don't run your channel.</b> We sit alongside your team and agencies, with no platform, agency or tool to sell, and leave the capability with you.</p>
+      <p class="indep">We've chosen a side. It's yours.</p>
+    </div>
+    <div class="panel">
+      <div class="label">Three things we help you establish</div>
+      <div class="three">
+        <div><span class="n">01</span><h3>Economics</h3><p>Where is value being created or lost? We start with money you're already spending.</p></div>
+        <div><span class="n">02</span><h3>Evidence</h3><p>What are we learning across products, offers, content and customers? How reliably can we measure it, and what still needs proving?</p></div>
+        <div><span class="n">03</span><h3>Decision</h3><p>What should we back, change, test or stop, and where else in the business can that learning work?</p></div>
+      </div>
+      <div class="label" style="margin-top:28px">Two ways to work with us</div>
+      <div class="ways2" style="border-top:0;padding-top:0">
+        <div><span class="n">01</span> <h3 style="display:inline">Learn with us.</h3><p>Briefings and in-house clinics for leadership teams, boards and investors: where the opportunities and risks lie, and what to do differently.</p></div>
+        <div><span class="n">02</span> <h3 style="display:inline">Solve a live decision together.</h3><p>Your decision, your numbers, and the evidence each team holds, brought into one view. From planning a launch to deciding what to scale or assessing an investment.</p></div>
+      </div>
+      <p class="callout"><b>Already running a Shop?</b> Start with our free <a href="/profitability-check/" style="color:#fff">Profitability Check</a>: your own Margin, Velocity, Materiality view (Exhibit 6.2), showing where you're leaving profit on the table.</p>
+    </div>
+  </div>
+</div></div>
+
+<!-- Enquiry -->
+<section id="contact"><div class="wrap">
+  <div class="intro">
+    <div><div class="label">Bring us a decision</div><h2>Bring us the decision you're facing.</h2></div>
+    <p>The first conversation is on us. You don't need to send any figures to start.</p>
+  </div>
+  <div class="enq">
+    <div class="topics" role="group" aria-label="What is it about?">
+      <button type="button" class="topic" data-topic="Already trading" aria-pressed="true"><div><h3>Already trading?</h3><p>Find where your Shop is leaving profit on the table. Decide which offers to back, rework or stop.</p></div><i>Choose</i></button>
+      <button type="button" class="topic" data-topic="Planning a launch" aria-pressed="false"><div><h3>Planning a launch?</h3><p>Test what the pilot should prove, the capital at risk, and the conditions for scaling or stopping.</p></div><i>Choose</i></button>
+      <button type="button" class="topic" data-topic="Assessing an investment" aria-pressed="false"><div><h3>Assessing an investment?</h3><p>Look beyond reported Shop growth to offer economics, customer value and the whole-business growth case.</p></div><i>Choose</i></button>
+      <button type="button" class="topic" data-topic="Briefing or clinic" aria-pressed="false"><div><h3>A briefing or clinic?</h3><p>Learn with us: bring the discussion inside your business, for your leadership team, board or investors.</p></div><i>Choose</i></button>
+    </div>
+    <form class="enqform" id="eform" novalidate>
+      <div class="label" id="e_topic_label">About: Already trading</div>
+      <div class="two">
+        <div class="field"><label for="e_name">Name</label><input id="e_name" autocomplete="name"></div>
+        <div class="field"><label for="e_email">Work email</label><input id="e_email" type="email" autocomplete="email"></div>
+      </div>
+      <div class="field"><label for="e_co">Company</label><input id="e_co" autocomplete="organization"></div>
+      <div class="field"><label for="e_q">What are you trying to decide? (optional)</label><textarea id="e_q" placeholder="For example: which offers to back for Black Friday, and where to pull back."></textarea></div>
+      <p class="err" id="e_err" hidden></p>
+      <button class="btn" type="submit" id="e_btn">Start the conversation</button>
+      <p class="small" style="font-size:12.5px">No figures needed. We use your details only to reply to you.</p>
+      <div id="e_done" hidden><h3>Thank you.</h3><p class="small" style="margin-top:6px">Your note is with Nnenna and the team, and we'll be in touch.</p></div>
+    </form>
+  </div>
+</div></section>
+
+<!-- About: report p56 -->
+<div class="about" id="about"><div class="wrap">
+  <div class="aboutgrid">
+    <div>
+      <img class="photo" src="/images/nnenna-onuba.webp" alt="Portrait of Nnenna Onuba">
+      <div class="who">
+        <div class="label">Founded and led by</div>
+        <h3>Nnenna Onuba</h3>
+        <div class="cap">Founder, Next10 Labs</div>
+        <p class="board">Nnenna is a Non-Executive Board Director of the British Beauty Council and was named one of Brummell's 30 Inspirational Women in the City in 2026.</p>
+        <a class="textlink" style="display:inline-block;margin-top:16px" href="https://www.linkedin.com/in/nnennaonuba/" target="_blank" rel="noopener">Connect on LinkedIn →</a>
       </div>
     </div>
+    <div>
+      <h2>About Next10 Labs</h2>
+      <p class="leadp">Next10 Labs brings together what consumer businesses rarely find in one place: independent research, commercial judgement, measurement expertise and a network of senior specialists, starting with TikTok Shop.</p>
+      <p class="bodyp">We combine our own analytical tools and know-how with the best emerging solutions and specialist expertise. With no platform, agency or software to sell, we find the most practical, cost-effective route to your goals.</p>
+      <div class="figs">
+        <div><b>20+</b><span>YEARS' CAREER</span></div>
+        <div><b>£20bn+</b><span>OF TRANSACTIONS</span></div>
+        <div><b>10</b><span>YEARS AT ROTHSCHILD</span></div>
+      </div>
+      <p class="bodyp" style="margin-top:24px">Over a career spanning more than two decades, Nnenna trained as a chartered accountant at PwC, spent ten years in mergers and acquisitions at investment bank Rothschild, working on more than £20bn of transactions, founded and ran beauty brand LBB Skin, co-led the sale of Nailberry, and invests in consumer businesses.</p>
+      <p class="statement">She brings a banker's eye for where value is created, lost and frequently misread, and a founder's understanding of what it takes to bring people together and act on the evidence.</p>
+      <div class="bench"><span class="label">Specialist Bench</span><span>We draw on a network of senior measurement, data and commercial specialists, bringing in the expertise each question requires.</span></div>
+    </div>
+  </div>
+</div></div>
 
-    <p class="independence">We are independent and evidence-led by design, with no commercial incentive to favour any platform, retailer, agency or measurement tool.</p>
-  </section>
+<!-- Final -->
+<div class="final"><div class="wrap">
+  <div>
+    <h2>Bring us the decision you're facing.</h2>
+    <p style="margin-top:14px;color:var(--muted);font-size:18px">The first conversation is on us.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:22px"><a class="btn" href="#contact">Start the conversation</a><a class="btn ghost" href="#get">Get the free report</a></div>
+  </div>
+  <div class="contact">
+    <div>Nnenna Onuba, Founder · <span>nnenna@next10labs.ai</span></div>
+    <div>next10labs.ai · <span>hello@next10labs.ai</span></div>
+  </div>
+</div></div>
 
-  <hr class="divider">
-
-  <section class="section research">
-    <span class="label">RESEARCH</span>
-
-    <p class="research-title">Following the Value: TikTok Shop and the Unbundling of Beauty Retail</p>
-
-    <p class="research-description">What brands and retailers need to know to grow profitably on TikTok Shop.</p>
-
-    <p class="research-meta">Launching October 2026.</p>
-
-    <p class="research-cta"><a class="link-accent" href="#tally-open=D4gbKR">Get it first</a></p>
-
-    <p class="research-meta talk-to-us">Talk to us</p>
-
-    <a class="link-accent email-link" href="mailto:hello@next10labs.ai">hello@next10labs.ai</a>
-  </section>
+<div class="wrap"><footer>© Next10 Labs · November 2026 · next10labs.ai · hello@next10labs.ai</footer></div>
 </main>
+<script>
+(function(){
+  var R={
+    ceo:{q:'Deciding whether to launch or scale TikTok Shop, and how much it deserves.',w:'Start with Chapter 6, then the practical guide on pp.53–54',a:'Put the report to work on your decision',h:'#ai',role:'a founder'},
+    cmo:{q:'Funding TikTok while the value appears elsewhere, and growing without simply outspending competitors.',w:'Sections 2.2, 5.2 and 5.5 · Chapter 3: The Growth Playbooks',a:'Put the report to work on your decision',h:'#ai',role:'a CMO'},
+    shop:{q:'Strong sales but uncertain profitability. Which products and bundles to push for Black Friday.',w:'Section 2.3, Playbook 7 and Section 6.4',a:'Run the free Profitability Check',h:'/profitability-check/',role:'running our TikTok Shop'},
+    retail:{q:'Selling alongside retail partners on TikTok Shop. Who pays for the demand, and where the profit lands.',w:'Chapter 4 and the legal appendix',a:'Put the report to work on your decision',h:'#ai',role:'leading sales with our retail partners'},
+    inv:{q:'Looking beyond reported Shop growth to what the business keeps. Share it with your founders and ask them to run the check before Black Friday.',w:'Executive summary and Chapter 6',a:'Get the report to share',h:'#get',role:'an investor'}
+  };
+  var box=document.getElementById('useful'),btns=document.querySelectorAll('.chips button');
+  function set(k){var r=R[k];btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.r===k)});
+    box.innerHTML='<b>'+r.q+'</b><span class="where">'+r.w+'</span><a class="textlink" data-k="'+k+'" href="'+r.h+'">'+r.a+' →</a>';
+    var role=document.getElementById('p_role');if(role){role.value=r.role;role.dispatchEvent(new Event('input'))}}
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.r)})});
+  set('ceo');
+})();
+</script>
+
+<script>
+(function(){
+  function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)}
+
+  // ---- HubSpot settings: fill these in once the two forms exist in HubSpot ----
+  var HUBSPOT={portalId:'',reportFormId:'',enquiryFormId:''};
+  function hsReady(id){return HUBSPOT.portalId&&id}
+  function splitName(n){n=n.trim();var i=n.indexOf(' ');return i<0?[n,'']:[n.slice(0,i),n.slice(i+1)]}
+  function hsSubmit(formId,fields){
+    return fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HUBSPOT.portalId+'/'+formId,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({fields:fields.filter(function(f){return f.value!==''}),context:{pageUri:location.href,pageName:document.title}})
+    }).then(function(r){if(!r.ok)throw new Error('HubSpot '+r.status);return r});
+  }
+
+  // report form
+  document.getElementById('rform').addEventListener('submit',function(e){e.preventDefault();
+    var em=document.getElementById('r_email').value.trim(),err=document.getElementById('r_err'),btn=document.getElementById('r_btn');
+    if(!validEmail(em)){err.textContent='Enter your work email so we can send you the link as well.';err.hidden=false;document.getElementById('r_email').focus();return}
+    err.hidden=true;
+    function done(){document.getElementById('getForm').hidden=true;document.getElementById('getDone').hidden=false;document.getElementById('dl').focus()}
+    if(!hsReady(HUBSPOT.reportFormId)){done();return}
+    var nm=splitName(document.getElementById('r_name').value);
+    btn.disabled=true;btn.textContent='Sending…';
+    hsSubmit(HUBSPOT.reportFormId,[
+      {name:'email',value:em},{name:'firstname',value:nm[0]},{name:'lastname',value:nm[1]},
+      {name:'company',value:document.getElementById('r_co').value.trim()},
+      {name:'report_starting_point',value:document.getElementById('r_topic').value},
+      {name:'research_updates_opt_in',value:document.getElementById('r_opt').checked?'true':'false'}
+    ]).then(done,done); /* never block the report if the contact list is unreachable */
+  });
+
+  // who sees what
+  var map={
+    mkt:{t:['shop','web'],c:'Sees the Shop and the brand website clearly: sales, creators, ads. A sale that lands at a retailer barely shows.'},
+    meas:{t:['shop','web','amz'],c:'Sees the digital channels the measurement tools can reach. A retailer’s till usually sits outside them.'},
+    lead:{t:['shop','web','amz','ret'],c:'Sees the totals across every channel, but not which activity created the value, or what it cost to get there.'},
+    ret:{t:['ret'],c:'Sees its own till, its own numbers and its own targets. Not what the brand spent to send the customer there.'},
+    n10:{t:['shop','web','amz','ret'],c:'At Next10 Labs, we’ve made that end-to-end view our work, independent and evidence-led.'}
+  };
+  var pbtn=document.querySelectorAll('.persp button'),tills=document.querySelectorAll('.till'),cap=document.getElementById('cap');
+  function setP(k){pbtn.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===k)});tills.forEach(function(t){t.classList.toggle('on',map[k].t.indexOf(t.dataset.t)>-1)});cap.textContent=map[k].c;}
+  pbtn.forEach(function(b){b.addEventListener('click',function(){setP(b.dataset.k)})});
+  setP('mkt');
+
+  // bestseller toggle
+  var min=-0.5,max=2.5,scale=document.getElementById('scale');
+  function pos(v){return ((v-min)/(max-min)*100)+'%'}
+  scale.innerHTML='<div class="zero" style="left:'+pos(0)+'"></div><div class="bar" id="bar"></div>'+[-0.5,0,1,2].map(function(v){return '<span class="tick" style="left:'+pos(v)+'">'+(v<0?'−$'+Math.abs(v).toFixed(2):'$'+v.toFixed(2))+'</span>'}).join('');
+  var bar=document.getElementById('bar'),big=document.getElementById('big'),what=document.getElementById('what');
+  var offers={single:{v:-0.15,txt:'−$0.15',w:'Contribution per order, after selling costs. Lost money.'},two:{v:1.98,txt:'+$1.98',w:'Contribution per order, after selling costs. Made money.'}};
+  function setO(k){var o=offers[k];document.querySelectorAll('.seg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.o===k)});
+    big.textContent=o.txt;big.className='big '+(o.v<0?'neg':'pos');what.textContent=o.w;
+    var a=Math.min(0,o.v),b=Math.max(0,o.v);bar.style.left=pos(a);bar.style.width=((b-a)/(max-min)*100)+'%';bar.style.background=o.v<0?'var(--bad)':'var(--good)';}
+  document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){setO(b.dataset.o)})});
+  setO('single');
+
+  // MVM
+  var q={hero:['True heroes','High margin, fast sellers. Back them.'],work:['Workhorses','They sell, but the margin is thin or negative. Reprice or rebundle them.'],gold:['Potential gold','Good margin, little volume yet. Test them.'],stop:['Stop or prove','Low margin, slow sales. Stop them, or prove the case for keeping them.']};
+  var qi=document.getElementById('qinfo'),fills={hero:'#EFE3E7',work:'#F6ECE3',gold:'#F5EEDF',stop:'#F2EFEA'};
+  function setQ(k){qi.innerHTML='<strong>'+q[k][0]+'</strong>'+q[k][1];document.querySelectorAll('.matrix .q').forEach(function(g){g.querySelector('rect').setAttribute('fill',g.dataset.q===k?'#E3CBD5':fills[g.dataset.q])});}
+  document.querySelectorAll('.matrix .q').forEach(function(g){g.setAttribute('tabindex','0');g.setAttribute('role','button');g.addEventListener('click',function(){setQ(g.dataset.q)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();setQ(g.dataset.q)}})});
+  setQ('work');
+
+  // AI prompt
+  var roleI=document.getElementById('p_role'),decI=document.getElementById('p_dec'),pt=document.getElementById('promptText');
+  function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  function promptPlain(){var r=roleI.value.trim()||'[YOUR ROLE]',d=decI.value.trim()||'[YOUR DECISION]';
+    return "I've attached Following the Value by Next10 Labs. I'm "+r+" and I'm trying to decide "+d+".\n\nUse the report to help me prepare. Ask me up to three questions about my situation. Then give me a one-page brief showing:\n1. The report findings most relevant to my decision, with chapter or exhibit references.\n2. What I should check, challenge or change.\n3. What I can usefully do next, particularly before Black Friday.\n\nSeparate evidence from assumptions. Don't invent figures about my business or treat the report as proof of results it does not establish.";}
+  function renderPrompt(){var r=roleI.value.trim(),d=decI.value.trim();
+    var html=esc(promptPlain());
+    html=html.replace(r?esc(r):'[YOUR ROLE]','<mark>'+(r?esc(r):'[YOUR ROLE]')+'</mark>').replace(d?esc(d):'[YOUR DECISION]','<mark>'+(d?esc(d):'[YOUR DECISION]')+'</mark>');
+    pt.innerHTML=html;}
+  roleI.addEventListener('input',renderPrompt);decI.addEventListener('input',renderPrompt);renderPrompt();
+  document.getElementById('copyPrompt').addEventListener('click',function(){var msg=document.getElementById('copyMsg');
+    function fallback(){var r=document.createRange();r.selectNodeContents(pt);var s=getSelection();s.removeAllRanges();s.addRange(r);msg.textContent='Selected. Press copy on your keyboard.'}
+    try{navigator.clipboard.writeText(promptPlain()).then(function(){msg.textContent='Copied. Paste it into your AI assistant with the report attached.'},fallback)}catch(e){fallback()}});
+
+  // enquiry
+  var topics=document.querySelectorAll('.topic'),tl=document.getElementById('e_topic_label');
+  topics.forEach(function(b){b.addEventListener('click',function(){topics.forEach(function(x){x.setAttribute('aria-pressed',x===b)});tl.textContent='About: '+b.dataset.topic;document.getElementById('e_name').focus({preventScroll:true});})});
+  document.getElementById('eform').addEventListener('submit',function(e){e.preventDefault();
+    var em=document.getElementById('e_email').value.trim(),err=document.getElementById('e_err'),btn=document.getElementById('e_btn');
+    if(!validEmail(em)){err.textContent='Enter your work email so we can reply.';err.hidden=false;document.getElementById('e_email').focus();return}
+    err.hidden=true;
+    var topic=(document.querySelector('.topic[aria-pressed="true"]')||{dataset:{topic:''}}).dataset.topic;
+    var name=document.getElementById('e_name').value.trim(),co=document.getElementById('e_co').value.trim(),q=document.getElementById('e_q').value.trim();
+    var done=document.getElementById('e_done');
+    if(!hsReady(HUBSPOT.enquiryFormId)){
+      var body='Name: '+name+'\nCompany: '+co+'\nEmail: '+em+'\n\n'+q;
+      location.href='mailto:hello@next10labs.ai?subject='+encodeURIComponent('Next10 Labs: '+topic)+'&body='+encodeURIComponent(body);
+      done.innerHTML='<h3>Your email is ready to send.</h3><p class="small" style="margin-top:6px">Your email app should have opened with your note. If it didn\'t, write to <b>hello@next10labs.ai</b>.</p>';done.hidden=false;return}
+    var nm=splitName(name);btn.disabled=true;btn.textContent='Sending…';
+    hsSubmit(HUBSPOT.enquiryFormId,[
+      {name:'email',value:em},{name:'firstname',value:nm[0]},{name:'lastname',value:nm[1]},{name:'company',value:co},
+      {name:'enquiry_topic',value:topic},{name:'message',value:q}
+    ]).then(function(){done.hidden=false;btn.hidden=true},
+      function(){btn.disabled=false;btn.textContent='Start the conversation';err.innerHTML='Sorry, that didn\'t send. Please email <b>hello@next10labs.ai</b> instead.';err.hidden=false});
+  });
+})();
+</script>
 </body>
 </html>
