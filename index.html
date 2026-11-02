@@ -413,8 +413,8 @@ footer{font-size:12.5px;color:var(--muted);padding-block:26px 40px;border-top:1p
   <div class="mvm">
     <div>
       <div class="label">Running a Shop? Get your range right before Black Friday</div>
-      <h2 style="margin-top:16px">Your biggest seller may not be your most profitable offer.</h2>
-      <p style="margin-top:20px;color:var(--muted)">The Profitability Check gives you your own Margin, Velocity, Materiality view of every product and offer, showing where you're leaving profit on the table.</p>
+      <h2 style="margin-top:16px">Which products and bundles should you push this Black Friday?</h2>
+      <p style="margin-top:20px;color:var(--muted)">Use your own Shop numbers to see which offers make money, which lose it, and where a different price, pack or bundle would change the answer. Choose whether this peak is about profit or momentum, and it shows the ROAS target each offer needs.</p>
       <ul>
         <li><b>Margin.</b> What each offer earns after all selling costs.</li>
         <li><b>Velocity.</b> How quickly it sells.</li>
@@ -499,6 +499,7 @@ footer{font-size:12.5px;color:var(--muted);padding-block:26px 40px;border-top:1p
         <div class="field"><label for="p_role">I'm a…</label><input id="p_role" placeholder="founder, CFO, head of ecommerce"></div>
         <div class="field"><label for="p_dec">Trying to decide…</label><input id="p_dec" placeholder="which offers to back for Black Friday"></div>
       </div>
+      <div class="field"><label for="p_goal">What are you trying to achieve?</label><select id="p_goal"><option value="">Choose one (optional)</option><option value="make money from my Shop">Make money from my Shop</option><option value="win new customers">Win new customers</option><option value="test products and offers before scaling">Test products and offers before scaling</option><option value="grow sales across retail and other channels">Grow sales across retail and other channels</option></select></div>
       <div class="prompt" id="promptText" aria-live="polite"></div>
       <div class="copyrow"><button class="btn" type="button" id="copyPrompt">Copy the prompt</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
     </div>
@@ -691,13 +692,13 @@ footer{font-size:12.5px;color:var(--muted);padding-block:26px 40px;border-top:1p
   // AI prompt
   var roleI=document.getElementById('p_role'),decI=document.getElementById('p_dec'),pt=document.getElementById('promptText');
   function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
-  function promptPlain(){var r=roleI.value.trim()||'[YOUR ROLE]',d=decI.value.trim()||'[YOUR DECISION]';
-    return "I've attached Following the Value by Next10 Labs. I'm "+r+" and I'm trying to decide "+d+".\n\nUse the report to help me prepare. Ask me up to three questions about my situation. Then give me a one-page brief showing:\n1. The report findings most relevant to my decision, with chapter or exhibit references.\n2. What I should check, challenge or change.\n3. What I can usefully do next, particularly before Black Friday.\n\nSeparate evidence from assumptions. Don't invent figures about my business or treat the report as proof of results it does not establish.";}
+  function promptPlain(){var r=roleI.value.trim()||'[YOUR ROLE]',d=decI.value.trim()||'[YOUR DECISION]',g=document.getElementById('p_goal').value;
+    return "I've attached Following the Value by Next10 Labs. I'm "+r+" and I'm trying to decide "+d+"."+(g?" My goal for TikTok Shop is to "+g+".":"")+"\n\nUse the report to help me prepare. Ask me up to three questions about my situation. Then give me a one-page brief showing:\n1. The report findings most relevant to my decision, with chapter or exhibit references.\n2. What I should check, challenge or change.\n3. What I can usefully do next, particularly before Black Friday.\n\nSeparate evidence from assumptions. Don't invent figures about my business or treat the report as proof of results it does not establish.";}
   function renderPrompt(){var r=roleI.value.trim(),d=decI.value.trim();
     var html=esc(promptPlain());
     html=html.replace(r?esc(r):'[YOUR ROLE]','<mark>'+(r?esc(r):'[YOUR ROLE]')+'</mark>').replace(d?esc(d):'[YOUR DECISION]','<mark>'+(d?esc(d):'[YOUR DECISION]')+'</mark>');
     pt.innerHTML=html;}
-  roleI.addEventListener('input',renderPrompt);decI.addEventListener('input',renderPrompt);renderPrompt();
+  roleI.addEventListener('input',renderPrompt);document.getElementById('p_goal').addEventListener('change',renderPrompt);decI.addEventListener('input',renderPrompt);renderPrompt();
   document.getElementById('copyPrompt').addEventListener('click',function(){var msg=document.getElementById('copyMsg');
     function fallback(){var r=document.createRange();r.selectNodeContents(pt);var s=getSelection();s.removeAllRanges();s.addRange(r);msg.textContent='Selected. Press copy on your keyboard.'}
     try{navigator.clipboard.writeText(promptPlain()).then(function(){msg.textContent='Copied. Paste it into your AI assistant with the report attached.'},fallback)}catch(e){fallback()}});
